@@ -161,12 +161,20 @@ if run_btn:
                 st.stop()
 
         # ─── Results ───
-        st.success(f"✅ Listo! Se generaron **{result['quotes_written']} cotizaciones**.")
+        n_review = len(result.get("review_flags", []))
+        if n_review > 0:
+            st.success(
+                f"✅ Listo! Se generaron **{result['quotes_written']} cotizaciones**. "
+                f"🔍 **{n_review} elementos requieren revisión manual** (ver pestaña abajo)."
+            )
+        else:
+            st.success(f"✅ Listo! Se generaron **{result['quotes_written']} cotizaciones**.")
 
-        col1, col2, col3 = st.columns(3)
+        col1, col2, col3, col4 = st.columns(4)
         col1.metric("Cotizaciones creadas", result["quotes_written"])
         col2.metric("No procesadas", len(result["not_processed"]))
-        col3.metric("Advertencias", len(result["warnings"]))
+        col3.metric("Revisión manual", n_review)
+        col4.metric("Advertencias", len(result["warnings"]))
 
         # Grand totals from summary
         if result["summary_rows"]:
@@ -197,8 +205,8 @@ if run_btn:
 
         # ─── Detail tabs ───
         st.divider()
-        tab_summary, tab_skipped, tab_warnings = st.tabs(
-            ["📋 Resumen", "⏭️ No procesadas", "⚠️ Advertencias"]
+        tab_summary, tab_skipped, tab_review, tab_warnings = st.tabs(
+            ["📋 Resumen", "⏭️ No procesadas", "🔍 Revisión manual", "⚠️ Advertencias"]
         )
 
         with tab_summary:
@@ -230,6 +238,22 @@ if run_btn:
                 )
             else:
                 st.info("✅ Todas las filas amarillas fueron procesadas.")
+
+        with tab_review:
+            review_flags = result.get("review_flags", [])
+            if review_flags:
+                st.caption(
+                    "🔍 Elementos detectados que requieren revisión humana — descuentos, créditos, "
+                    "notas a contabilidad y otros casos ambiguos. **El sistema NO los incluye en las "
+                    "cotizaciones automáticamente.** Decide caso por caso cómo manejarlos en Peachtree."
+                )
+                st.dataframe(
+                    pd.DataFrame(review_flags),
+                    hide_index=True,
+                    use_container_width=True,
+                )
+            else:
+                st.info("✅ Sin elementos que requieran revisión manual.")
 
         with tab_warnings:
             if result["warnings"]:
