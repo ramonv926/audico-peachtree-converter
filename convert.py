@@ -26,7 +26,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from openpyxl import load_workbook
-from openpyxl.utils import column_index_from_string
+from openpyxl.utils import column_index_from_string, get_column_letter
 
 # The 69-column Sage 50 Sales Journal header — this is the exact order Peachtree expects
 SALES_HEADER = [
@@ -284,11 +284,9 @@ def extract_quotes_from_sheet(sheet, sheet_data, tab_config, fallback_year, fall
     """
     Scan the sheet and group consecutive item rows into quotes, one per yellow CLIENTE.
     `sheet` carries fill/formatting; `sheet_data` carries resolved formula values.
-    Returns a list of dicts: each = {
-        'client_row': int, 'client_name': str, 'event_date_raw': str,
-        'event_date': parse_result, 'items': [{row, description, qty, days, unit_price, total, source_total}],
-        'skipped': bool, 'skip_reason': str,
-    }
+    Returns (quotes, review_flags) where:
+      quotes = list of quote dicts (as before)
+      review_flags = list of dicts with detected anomalies (discounts, notes, negative amounts)
     """
     client_col = col_letter_to_idx(tab_config["client_col"])
     desc_col = col_letter_to_idx(tab_config["desc_col"])
@@ -300,12 +298,121 @@ def extract_quotes_from_sheet(sheet, sheet_data, tab_config, fallback_year, fall
     skip_rows = set(tab_config.get("skip_rows", []))
 
     quotes = []
+    review_flags = []
     current_quote = None
+    blank_row_streak = 0
+    BLANK_ROWS_TO_CLOSE = 3
+    pending_note = None  # holds the text of a "Nota:" line for the next yellow CLIENTE row
+
+    # Spanish keywords that indicate a discount/credit/manual-handling flag
+    discount_keywords = [
+        "debitar", "descuento", "discount", "credito", "crédito",
+        "nota de credito", "nota de crédito", "rebaja", "ajuste",
+        "devolu", "reembolso", "refund",
+    ]
+
+    def _row_has_keyword(row, keyword_list):
+        """Search every cell in this row for any of the keywords. Returns matched (col_letter, cell_text, keyword) or None."""
+        for c in range(1, sheet.max_column + 1):
+            v = sheet_data.cell(row=row, column=c).value
+            if v is None:
+                continue
+            s = str(v).lower()
+            for kw in keyword_list:
+                if kw in s:
+                    return (get_column_letter(c), str(v), kw)
+        return None
+
+    def _row_is_blank(row):
+        """True if no content in any of the relevant columns."""
+        for c in (client_col, desc_col, qty_col, total_col):
+            if c is None:
+                continue
+            v = sheet_data.cell(row=row, column=c).value
+            if v is not None and str(v).strip():
+                return False
+        return True
 
     for row in range(11, sheet.max_row + 1):
         client_cell = sheet.cell(row=row, column=client_col)
         client_val = client_cell.value
         client_val_str = str(client_val).strip() if client_val is not None else ""
+
+        # ── Blank row tracking — close current quote after N consecutive blanks
+        if _row_is_blank(row):
+            blank_row_streak += 1
+            if blank_row_streak >= BLANK_ROWS_TO_CLOSE and current_quote is not None:
+                quotes.append(current_quote)
+                current_quote = None
+            continue
+        else:
+            blank_row_streak = 0
+
+        # ── Discount/credit/note keyword detection (always runs, regardless of yellow status)
+        kw_match = _row_has_keyword(row, discount_keywords)
+        if kw_match:
+            col_let, cell_text, kw = kw_match
+            # Pull a useful amount value if any
+            amount_val = None
+            for c in [total_col, audico_u_col, col_letter_to_idx("L"), col_letter_to_idx("J")]:
+                if c is None:
+                    continue
+                v = sheet_data.cell(row=row, column=c).value
+                if isinstance(v, (int, float)) and v != 0:
+                    amount_val = v
+                    break
+
+            # Spanish category label
+            if kw in ("debitar",) and cell_text.lower().strip().startswith(("nota:", "nota :")):
+                category = "Nota a contabilidad (memo)"
+                pending_note = cell_text  # attach to next yellow CLIENTE
+            elif kw in ("nota de credito", "nota de crédito", "credito", "crédito"):
+                category = "Posible nota de crédito"
+            elif kw in ("descuento", "discount", "rebaja"):
+                category = "Posible descuento"
+            elif kw in ("devolu", "reembolso", "refund"):
+                category = "Posible devolución"
+            elif kw in ("ajuste",):
+                category = "Posible ajuste manual"
+            else:
+                category = "Posible descuento/crédito"
+
+            review_flags.append({
+                "tab": sheet.title,
+                "fila": row,
+                "columna": col_let,
+                "categoria": category,
+                "contenido": cell_text[:200],
+                "monto": amount_val if amount_val is not None else "",
+                "palabra_clave": kw,
+                "accion_recomendada": "Revisar manualmente — el sistema NO incluye descuentos en las cotizaciones automáticamente.",
+            })
+
+        # ── Detect negative amount in total/L column (often = end-of-tab credit)
+        l_col_idx = col_letter_to_idx("L")
+        for cidx in [total_col, l_col_idx]:
+            if cidx is None:
+                continue
+            v = sheet_data.cell(row=row, column=cidx).value
+            if isinstance(v, (int, float)) and v < 0:
+                # Avoid double-flagging if the keyword check already caught this row
+                already = any(rf["fila"] == row and rf["tab"] == sheet.title for rf in review_flags)
+                if not already:
+                    # Get the description from H column (totals area uses H), or from desc_col, or whatever's nearby
+                    h_col = col_letter_to_idx("H")
+                    nearby = sheet_data.cell(row=row, column=h_col).value if h_col else None
+                    if nearby is None:
+                        nearby = sheet_data.cell(row=row, column=desc_col).value if desc_col else ""
+                    review_flags.append({
+                        "tab": sheet.title,
+                        "fila": row,
+                        "columna": get_column_letter(cidx),
+                        "categoria": "Monto negativo detectado",
+                        "contenido": str(nearby or "")[:200],
+                        "monto": v,
+                        "palabra_clave": "(monto < 0)",
+                        "accion_recomendada": "Revisar — montos negativos suelen ser créditos o ajustes que se manejan aparte.",
+                    })
 
         # A new quote starts on a yellow-highlighted CLIENTE row
         if client_val_str and is_yellow(client_cell) and client_val_str.upper() != "CLIENTE":
@@ -321,8 +428,22 @@ def extract_quotes_from_sheet(sheet, sheet_data, tab_config, fallback_year, fall
                 "event_date": parsed,
                 "items": [],
                 "skipped": row in skip_rows,
-                "skip_reason": "Listed in config 'skip_rows'" if row in skip_rows else "",
+                "skip_reason": "Marcada en config 'skip_rows'" if row in skip_rows else "",
+                "preceded_by_note": pending_note,
             }
+            # If a "Nota:" preceded this quote, also flag it for review
+            if pending_note:
+                review_flags.append({
+                    "tab": sheet.title,
+                    "fila": row,
+                    "columna": tab_config["client_col"],
+                    "categoria": "Cotización precedida por nota",
+                    "contenido": f"Cliente: {client_val_str} — Nota previa: {pending_note[:120]}",
+                    "monto": "",
+                    "palabra_clave": "nota+cotización",
+                    "accion_recomendada": "Verificar la nota antes de aprobar la cotización (puede requerir ajuste manual).",
+                })
+                pending_note = None
             # Add this row's item (first item of the quote lives on the same row as CLIENTE)
             _add_item_if_present(sheet_data, row, desc_col, qty_col, days_col, audico_u_col, total_col, current_quote)
             continue
@@ -332,6 +453,8 @@ def extract_quotes_from_sheet(sheet, sheet_data, tab_config, fallback_year, fall
             if current_quote is not None:
                 quotes.append(current_quote)
                 current_quote = None
+            # Reset pending note if it doesn't get used
+            pending_note = None
             continue
 
         # Otherwise, if we're inside a quote and the row has a description, it's a continuation item
@@ -344,7 +467,7 @@ def extract_quotes_from_sheet(sheet, sheet_data, tab_config, fallback_year, fall
     if current_quote is not None:
         quotes.append(current_quote)
 
-    return quotes
+    return quotes, review_flags
 
 
 def _add_item_if_present(sheet, row, desc_col, qty_col, days_col, audico_u_col, total_col, quote):
@@ -610,6 +733,7 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
     summary_rows = []
     not_processed_rows = []
     warnings = []
+    all_review_flags = []
 
     total_quotes_written = 0
 
@@ -618,7 +742,7 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
         if norm in ignore_tabs:
             continue
         if norm not in tabs_cfg:
-            warnings.append(f"Tab '{sheet_name}' is not in hotel_mapping.json — skipped.")
+            warnings.append(f"Pestaña '{sheet_name}' no está en hotel_mapping.json — se omitió.")
             continue
 
         tab_cfg = tabs_cfg[norm]
@@ -626,8 +750,8 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
         # Customer verification
         if known_customer_ids is not None and tab_cfg["customer_id"] not in known_customer_ids:
             warnings.append(
-                f"Tab '{sheet_name}': Customer ID {tab_cfg['customer_id']} NOT found in current "
-                f"customer list. Import may fail until this customer is created in Peachtree."
+                f"Pestaña '{sheet_name}': el ID de cliente {tab_cfg['customer_id']} NO existe en la "
+                f"lista actual de Peachtree. La importación podría fallar hasta que se cree el cliente."
             )
 
         sheet = wb[sheet_name]          # has fill info
@@ -636,7 +760,8 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
         fallback_year = header_date[0] if header_date else run_date.year
         fallback_month = header_date[1] if header_date else run_date.month
 
-        quotes = extract_quotes_from_sheet(sheet, sheet_data, tab_cfg, fallback_year, fallback_month)
+        quotes, sheet_review_flags = extract_quotes_from_sheet(sheet, sheet_data, tab_cfg, fallback_year, fallback_month)
+        all_review_flags.extend(sheet_review_flags)
 
         tab_out_dir = out_dir / slugify(sheet_name, 30)
         tab_out_dir.mkdir(exist_ok=True)
@@ -658,7 +783,7 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
                     "tab": sheet_name, "row": q["client_row"], "client": q["client_name"],
                     "event_date_raw": str(q["event_date_raw"] or ""),
                     "items": 0,
-                    "reason": "Yellow CLIENTE row has no line items below it",
+                    "reason": "Fila CLIENTE amarilla sin partidas debajo",
                 })
                 continue
 
@@ -666,16 +791,16 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
             for it in q["items"]:
                 if it["source_total"] and abs(it["computed_total"] - it["source_total"]) > 0.01:
                     warnings.append(
-                        f"{sheet_name} R{it['row']} '{q['client_name']}' — item '{it['description']}': "
-                        f"computed (unit×qty×days = {it['computed_total']:.2f}) "
-                        f"disagrees with source J column ({it['source_total']:.2f})."
+                        f"{sheet_name} R{it['row']} '{q['client_name']}' — partida '{it['description']}': "
+                        f"total recalculado (unit×cant×días = {it['computed_total']:.2f}) "
+                        f"no coincide con columna J del archivo ({it['source_total']:.2f})."
                     )
 
             # Warn on unparseable dates
             if not q["event_date"]["parsed_ok"] and q["event_date_raw"]:
                 warnings.append(
-                    f"{sheet_name} R{q['client_row']} '{q['client_name']}' — could not parse date "
-                    f"'{q['event_date_raw']}'; passing through as-is into note."
+                    f"{sheet_name} R{q['client_row']} '{q['client_name']}' — no se pudo interpretar la fecha "
+                    f"'{q['event_date_raw']}'; se incluye tal cual en la nota de la cotización."
                 )
 
             rows, subtotal, tax, total = build_quote_rows(q, tab_cfg, defaults, run_date, good_thru_date)
@@ -720,13 +845,23 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
         else:
             f.write("tab,row,client,event_date_raw,items,reason\n")
 
+    # Write review-needed (Spanish)
+    with open(out_dir / "_revision_manual.csv", "w", encoding="utf-8", newline="") as f:
+        if all_review_flags:
+            w = csv.DictWriter(f, fieldnames=list(all_review_flags[0].keys()))
+            w.writeheader()
+            for r in all_review_flags:
+                w.writerow(r)
+        else:
+            f.write("tab,fila,columna,categoria,contenido,monto,palabra_clave,accion_recomendada\n")
+
     # Write warnings
     with open(out_dir / "_warnings.txt", "w", encoding="utf-8") as f:
         if warnings:
             for w in warnings:
                 f.write(w + "\n")
         else:
-            f.write("No warnings.\n")
+            f.write("Sin advertencias.\n")
 
     # Return structured result instead of printing
     return {
@@ -734,6 +869,7 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
         "summary_rows": summary_rows,
         "not_processed": not_processed_rows,
         "warnings": warnings,
+        "review_flags": all_review_flags,
         "out_dir": out_dir,
     }
 
@@ -760,6 +896,7 @@ def main():
     print(f"Wrote {result['quotes_written']} quote CSVs to {result['out_dir']}")
     print(f"Summary: {result['out_dir'] / '_summary.csv'}")
     print(f"Not processed: {result['out_dir'] / '_not_processed.csv'} ({len(result['not_processed'])} entries)")
+    print(f"Review needed: {result['out_dir'] / '_revision_manual.csv'} ({len(result['review_flags'])} flags)")
     print(f"Warnings: {result['out_dir'] / '_warnings.txt'} ({len(result['warnings'])} messages)")
 
 
