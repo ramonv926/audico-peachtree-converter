@@ -1,0 +1,107 @@
+{
+  "_comment": "Maps each xlsx tab name (lowercase) to its Peachtree customer info. 'client_col' is the column letter containing the CLIENTE in that tab (C for most, some sheets differ). 'desc_col' is the item description column. 'qty_col'/'days_col'/'audico_u_col'/'total_col' reflect the layout of that tab. 'skip_rows' is a list of xlsx row numbers (1-based) to ignore even if yellow-highlighted.",
+  "tabs": {
+    "miramar": {
+      "customer_id": "34573-11-256767",
+      "customer_name": "MIRAMAR DEVELOPMENT CORP",
+      "ship_to_name": "Hotel InterContinental Miramar Panama",
+      "ship_to_address": "Avenida Balboa",
+      "ship_to_city": "Panama",
+      "client_col": "C", "desc_col": "D", "qty_col": "E", "days_col": "G", "audico_u_col": "I", "total_col": "J",
+      "skip_rows": []
+    },
+    "wpb": {
+      "customer_id": "1311050-1-608167",
+      "customer_name": "EUROLATIN HOSPITALITY CORP",
+      "ship_to_name": "Hotel Westin Playa Bonita",
+      "ship_to_address": "Km. 6 Camino a Veracruz",
+      "ship_to_city": "Panama",
+      "client_col": "C", "desc_col": "D", "qty_col": "G", "days_col": "I", "audico_u_col": "K", "total_col": "L",
+      "skip_rows": [335]
+    },
+    "wce": {
+      "customer_id": "1135843-1-568374",
+      "customer_name": "SILVERKING INVESTMENT CORP",
+      "ship_to_name": "Hotel Westin Costa del Este",
+      "ship_to_address": "Avenida Centenario",
+      "ship_to_city": "Panama",
+      "client_col": "C", "desc_col": "D", "qty_col": "E", "days_col": "G", "audico_u_col": "I", "total_col": "J",
+      "skip_rows": [85, 87, 89, 91]
+    },
+    "le meridien": {
+      "customer_id": "1343809-1-615640",
+      "customer_name": "INMOBILIARY  MERIDIANO",
+      "ship_to_name": "Hotel Le Meridien",
+      "ship_to_address": "Avenida Balboa",
+      "ship_to_city": "Panama",
+      "client_col": "C", "desc_col": "D", "qty_col": "E", "days_col": "G", "audico_u_col": "I", "total_col": "J",
+      "skip_rows": []
+    },
+    "crowne ciudad": {
+      "customer_id": "41256-2-282861",
+      "customer_name": "GOLDEN MUTUAL INVESTMENT CORP",
+      "ship_to_name": "Hotel Crowne Plaza Panama",
+      "ship_to_address": "Via Espana",
+      "ship_to_city": "Panama",
+      "client_col": "C", "desc_col": "D", "qty_col": "E", "days_col": "G", "audico_u_col": "I", "total_col": "J",
+      "skip_rows": []
+    },
+    "holiday": {
+      "customer_id": "965983-1-528696",
+      "customer_name": "MIRAFLORES DEVELOPMENT CORP.",
+      "ship_to_name": "Hotel Holiday Inn",
+      "ship_to_address": "Avenida Manuel Espinosa Batista",
+      "ship_to_city": "Panama",
+      "client_col": "C", "desc_col": "D", "qty_col": "E", "days_col": "G", "audico_u_col": "I", "total_col": "J",
+      "skip_rows": []
+    },
+    "crowne aero": {
+      "customer_id": "1740287-1-694190",
+      "customer_name": "AEROTEL S A",
+      "ship_to_name": "Crowne Plaza Aeropuerto",
+      "ship_to_address": "Aeropuerto Internacional de Tocumen",
+      "ship_to_city": "Panama",
+      "client_col": "C", "desc_col": "D", "qty_col": "E", "days_col": "G", "audico_u_col": "I", "total_col": "J",
+      "skip_rows": []
+    },
+    "dreams": {
+      "customer_id": "64191-91-357060",
+      "customer_name": "PARADISE BEACH CORPORATE",
+      "ship_to_name": "Hotel Dreams Delight Playa Bonita",
+      "ship_to_address": "Playa Bonita",
+      "ship_to_city": "Panama",
+      "client_col": "C", "desc_col": "D", "qty_col": "E", "days_col": "G", "audico_u_col": "I", "total_col": "J",
+      "skip_rows": []
+    },
+    "gamboa": {
+      "customer_id": "49063-111-313586",
+      "customer_name": "TROPICAL RESORT INTERNATIONAL",
+      "ship_to_name": "Hotel Gamboa Rainforest Reserve",
+      "ship_to_address": "Gamboa",
+      "ship_to_city": "Panama",
+      "client_col": "C", "desc_col": "D", "qty_col": "E", "days_col": "G", "audico_u_col": "I", "total_col": "J",
+      "skip_rows": []
+    },
+    "panamazing": {
+      "customer_id": "45982-1-370413",
+      "customer_name": "GAMBOA TOURS INC",
+      "ship_to_name": "Panamazing",
+      "ship_to_address": "Gamboa",
+      "ship_to_city": "Panama",
+      "client_col": "C", "desc_col": "E", "qty_col": "F", "days_col": "H", "audico_u_col": null, "total_col": "I",
+      "_note": "panamazing has no AUDICO U column; the I column is already the audico-share total. unit_price is computed as total/(qty*days).",
+      "skip_rows": []
+    }
+  },
+  "ignore_tabs": ["resumen"],
+  "defaults": {
+    "accounts_receivable_account": "110",
+    "sales_tax_id": "ITBMS",
+    "sales_tax_rate": 0.07,
+    "gl_product_line": "403",
+    "gl_tax_line": "219",
+    "ship_via": "Airborne",
+    "displayed_terms": "Net 30 Days",
+    "quote_good_thru_days": 30
+  }
+}
