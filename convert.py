@@ -779,8 +779,10 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
     not_processed_rows = []
     warnings = []
     all_review_flags = []
+    combined_rows = []  # Every row from every quote, for one master CSV import
 
     total_quotes_written = 0
+    quote_sequence = 0  # Increments per generated quote — used as temporary Quote #/Invoice # in combined file
 
     for sheet_name in wb.sheetnames:
         norm = sheet_name.lower().strip()
@@ -850,6 +852,10 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
 
             rows, subtotal, tax, total = build_quote_rows(q, tab_cfg, defaults, run_date, good_thru_date)
 
+            # Assign a temporary sequence number for this quote (used in combined CSV to group its rows)
+            quote_sequence += 1
+            temp_quote_id = f"TMP-{quote_sequence:04d}"
+
             # Filename
             event_date_part = (
                 q["event_date"]["start_date"].strftime("%Y-%m-%d")
@@ -858,6 +864,14 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
             fname = f"{slugify(sheet_name, 20)}_R{q['client_row']}_{slugify(q['client_name'], 30)}_{event_date_part}.csv"
             fpath = tab_out_dir / fname
             write_quote_csv(rows, fpath)
+
+            # Build combined-CSV version with temp_quote_id as Invoice/CM # and Quote #
+            # so Sage knows where one quote ends and the next begins on bulk import
+            for r in rows:
+                combined_row = dict(r)
+                combined_row["Invoice/CM #"] = temp_quote_id
+                combined_row["Quote #"] = temp_quote_id
+                combined_rows.append(combined_row)
 
             summary_rows.append({
                 "tab": sheet_name,
@@ -868,9 +882,17 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
                 "subtotal": money(subtotal),
                 "itbms": money(tax),
                 "total": money(total),
+                "temp_quote_id": temp_quote_id,
                 "file": str(fpath.relative_to(out_dir)),
             })
             total_quotes_written += 1
+
+    # Write combined CSV — one master file with ALL quotes for bulk import into Sage
+    # Same 59-column format, no header row, just all rows from all quotes back-to-back.
+    # Each quote gets a unique TMP-NNNN identifier in Invoice/CM # and Quote # columns
+    # so Sage can tell where one quote ends and the next begins.
+    if combined_rows:
+        write_quote_csv(combined_rows, out_dir / "_TODAS_LAS_COTIZACIONES.csv")
 
     # Write summary
     with open(out_dir / "_summary.csv", "w", encoding="utf-8", newline="") as f:
