@@ -193,13 +193,36 @@ if run_btn:
         # ─── Download button ───
         st.divider()
         st.subheader("📥 Descargar")
+
+        # PRIMARY: combined CSV for bulk import — accounting just imports this ONE file
+        combined_path = out_path / "_TODAS_LAS_COTIZACIONES.csv"
+        if combined_path.exists():
+            st.markdown(
+                "**⭐ Recomendado: archivo único para importación masiva.** "
+                "Sube este archivo a Sage 50 una sola vez y todas las cotizaciones se cargan juntas."
+            )
+            st.download_button(
+                label=f"⬇️ Descargar TODO en un solo CSV ({result['quotes_written']} cotizaciones)",
+                data=combined_path.read_bytes(),
+                file_name=f"audico_TODAS_cotizaciones_{override_date.isoformat()}.csv",
+                mime="text/csv",
+                type="primary",
+                use_container_width=True,
+            )
+            st.caption(
+                "💡 Cada cotización lleva un ID temporal (TMP-0001, TMP-0002, etc.) "
+                "para que Sage las separe correctamente. Sage les asignará números reales al convertirlas en facturas."
+            )
+            st.markdown("---")
+
+        # SECONDARY: full ZIP with individual files + audit reports
+        st.markdown("**Alternativa: ZIP con archivos individuales + reportes de auditoría.**")
         zip_bytes = _zip_directory(out_path)
         st.download_button(
-            label=f"⬇️ Descargar {result['quotes_written']} CSVs + reportes (ZIP)",
+            label=f"⬇️ Descargar ZIP completo ({result['quotes_written']} CSVs individuales + reportes)",
             data=zip_bytes,
             file_name=f"audico_cotizaciones_{override_date.isoformat()}.zip",
             mime="application/zip",
-            type="primary",
             use_container_width=True,
         )
 
