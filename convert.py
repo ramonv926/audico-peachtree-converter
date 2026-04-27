@@ -28,24 +28,70 @@ from pathlib import Path
 from openpyxl import load_workbook
 from openpyxl.utils import column_index_from_string, get_column_letter
 
-# The 69-column Sage 50 Sales Journal header — this is the exact order Peachtree expects
+# Sage 50 Pro import schema — 59 columns, exact order, NO header row in the output file.
+# Reverse-engineered from the actual Sage 50 Pro Sales Journal export at Audico, verified column-by-column.
+# Fields like Customer Name, Accounts Receivable Amount, AR Date Cleared, Inventory Account, etc.
+# are NOT included — Sage computes those automatically from the Customer ID and amounts.
 SALES_HEADER = [
-    "Customer ID", "Customer Name", "Invoice/CM #", "Apply to Invoice Number", "Credit Memo",
-    "Progress Billing Invoice", "Date", "Ship By", "Quote", "Quote #", "Quote Good Thru Date",
-    "Drop Ship", "Ship to Name", "Ship to Address-Line One", "Ship to Address-Line Two",
-    "Ship to City", "Ship to State", "Ship to Zipcode", "Ship to Country", "Customer PO",
-    "Ship Via", "Ship Date", "Date Due", "Discount Amount", "Discount Date", "Displayed Terms",
-    "Sales Representative ID", "Accounts Receivable Account", "Accounts Receivable Amount",
-    "Sales Tax ID", "Invoice Note", "Note Prints After Line Items", "Statement Note",
-    "Stmt Note Prints Before Ref", "Internal Note", "Beginning Balance Transaction",
-    "AR Date Cleared in Bank Rec", "Number of Distributions", "Invoice/CM Distribution",
-    "Apply to Invoice Distribution", "Apply To Sales Order", "Apply to Proposal", "Quantity",
-    "SO/Proposal Number", "Item ID", "Serial Number", "SO/Proposal Distribution", "Description",
-    "G/L Account", "GL Date Cleared in Bank Rec", "Unit Price", "Tax Type", "UPC / SKU", "Weight",
-    "Amount", "Inventory Account", "Inv Acnt Date Cleared In Bank Rec", "Cost of Sales Account",
-    "COS Acnt Date Cleared In Bank Rec", "Cost of Sales Amount", "Job ID", "Sales Tax Agency ID",
-    "Transaction Period", "Transaction Number", "Receipt Number", "Return Authorization",
-    "Voided by Transaction", "Recur Number", "Recur Frequency",
+    "Customer ID",                     # 1
+    "Invoice/CM #",                    # 2
+    "Apply to Invoice Number",         # 3
+    "Credit Memo",                     # 4
+    "Progress Billing Invoice",        # 5
+    "Date",                            # 6
+    "Ship By",                         # 7
+    "Quote",                           # 8
+    "Quote #",                         # 9
+    "Quote Good Thru Date",            # 10
+    "Drop Ship",                       # 11
+    "Ship to Name",                    # 12
+    "Ship to Address-Line One",        # 13
+    "Ship to Address-Line Two",        # 14
+    "Ship to City",                    # 15
+    "Ship to State",                   # 16
+    "Ship to Zipcode",                 # 17
+    "Ship to Country",                 # 18
+    "Customer PO",                     # 19
+    "Ship Via",                        # 20
+    "Ship Date",                       # 21
+    "Date Due",                        # 22
+    "Discount Amount",                 # 23
+    "Discount Date",                   # 24
+    "Displayed Terms",                 # 25
+    "Sales Representative ID",         # 26
+    "Accounts Receivable Account",     # 27
+    "Sales Tax ID",                    # 28
+    "Invoice Note",                    # 29
+    "Note Prints After Line Items",    # 30
+    "Statement Note",                  # 31
+    "Stmt Note Prints Before Ref",     # 32
+    "Internal Note",                   # 33
+    "Beginning Balance Transaction",   # 34
+    "Number of Distributions",         # 35
+    "Invoice/CM Distribution",         # 36
+    "Apply to Invoice Distribution",   # 37
+    "Apply To Sales Order",            # 38
+    "Apply to Proposal",               # 39
+    "Quantity",                        # 40
+    "SO/Proposal Number",              # 41
+    "Item ID",                         # 42
+    "Serial Number",                   # 43
+    "SO/Proposal Distribution",        # 44
+    "Description",                     # 45
+    "G/L Account",                     # 46
+    "Unit Price",                      # 47
+    "Tax Type",                        # 48
+    "UPC / SKU",                       # 49
+    "Weight",                          # 50
+    "Amount",                          # 51
+    "Job ID",                          # 52
+    "Sales Tax Agency ID",             # 53
+    "Transaction Period",              # 54
+    "Transaction Number",              # 55
+    "Return Authorization",            # 56
+    "Voided by Transaction",           # 57
+    "Recur Number",                    # 58
+    "Recur Frequency",                 # 59
 ]
 
 MONTHS_ES = {
@@ -528,18 +574,21 @@ def build_quote_rows(quote, tab_config, defaults, quote_date, good_thru_date):
     date_str = _peachtree_date(quote_date)
     good_thru_str = _peachtree_date(good_thru_date)
 
-    # Common header fields repeated on every row
+    # Common header fields repeated on every row.
+    # Field count and order MUST match the 59-column Sage 50 Pro import schema (see SALES_HEADER above).
+    # Booleans use TRUE/FALSE strings — verified against Sage's own export.
+    # The CSV writer uses extrasaction='ignore' so any extra keys here would be dropped, but we
+    # only set the 59 fields Sage expects.
     common = {
         "Customer ID": tab_config["customer_id"],
-        "Customer Name": tab_config["customer_name"],
-        "Invoice/CM #": "",  # left blank so Peachtree auto-assigns on conversion
+        "Invoice/CM #": "",  # left blank so Sage auto-assigns on conversion
         "Apply to Invoice Number": "",
         "Credit Memo": "FALSE",
         "Progress Billing Invoice": "FALSE",
         "Date": date_str,
         "Ship By": "",
         "Quote": "TRUE",
-        "Quote #": "",  # auto-assigned by Peachtree
+        "Quote #": "",  # auto-assigned by Sage
         "Quote Good Thru Date": good_thru_str,
         "Drop Ship": "FALSE",
         "Ship to Name": tab_config["ship_to_name"],
@@ -558,7 +607,6 @@ def build_quote_rows(quote, tab_config, defaults, quote_date, good_thru_date):
         "Displayed Terms": defaults["displayed_terms"],
         "Sales Representative ID": "",
         "Accounts Receivable Account": defaults["accounts_receivable_account"],
-        "Accounts Receivable Amount": money(grand_total),
         "Sales Tax ID": defaults["sales_tax_id"],
         "Invoice Note": "",
         "Note Prints After Line Items": "FALSE",
@@ -566,7 +614,6 @@ def build_quote_rows(quote, tab_config, defaults, quote_date, good_thru_date):
         "Stmt Note Prints Before Ref": "FALSE",
         "Internal Note": "",
         "Beginning Balance Transaction": "FALSE",
-        "AR Date Cleared in Bank Rec": "",
         "Number of Distributions": str(total_dists),
         "Apply to Invoice Distribution": "0",
         "Apply To Sales Order": "FALSE",
@@ -575,18 +622,11 @@ def build_quote_rows(quote, tab_config, defaults, quote_date, good_thru_date):
         "Item ID": "",
         "Serial Number": "",
         "SO/Proposal Distribution": "0",
-        "GL Date Cleared in Bank Rec": "",
         "UPC / SKU": "",
         "Weight": "0.00",
-        "Inventory Account": "",
-        "Inv Acnt Date Cleared In Bank Rec": "",
-        "Cost of Sales Account": "",
-        "COS Acnt Date Cleared In Bank Rec": "",
-        "Cost of Sales Amount": "0.00",
         "Job ID": "",
         "Transaction Period": "",
         "Transaction Number": "",
-        "Receipt Number": "",
         "Return Authorization": "",
         "Voided by Transaction": "",
         "Recur Number": "0",
@@ -678,10 +718,15 @@ def slugify(name, maxlen=40):
 
 
 def write_quote_csv(rows, path):
-    """Write a quote to a CSV file with the 69-column header."""
+    """Write a quote to a CSV file in Sage 50 Pro import format.
+
+    CRITICAL: NO HEADER ROW. Sage 50 Pro's Sales Journal import does not expect a header.
+    Verified against Sage's own export — first row is data, not field names.
+    Field order is fixed by SALES_HEADER (59 columns); Sage matches by position.
+    """
     with open(path, "w", encoding="latin-1", newline="") as f:
         w = csv.DictWriter(f, fieldnames=SALES_HEADER, extrasaction="ignore", quoting=csv.QUOTE_MINIMAL)
-        w.writeheader()
+        # NOTE: NO writeheader() call — Sage import wants pure data rows
         for r in rows:
             w.writerow(r)
 
