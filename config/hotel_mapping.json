@@ -1,5 +1,5 @@
 {
-  "_comment": "Maps each xlsx tab name (lowercase) to its Peachtree customer info. 'client_col' is the column letter containing the CLIENTE in that tab (C for most, some sheets differ). 'desc_col' is the item description column. 'qty_col'/'days_col'/'audico_u_col'/'total_col' reflect the layout of that tab. 'skip_rows' is a list of xlsx row numbers (1-based) to ignore even if yellow-highlighted.",
+  "_comment": "STANDARD LAYOUT (9 of 10 tabs): client=C, desc=D, qty=E, days=G, audico_u=I, total=J. PANAMAZING is the only remaining exception — see note in its block. When operations standardizes panamazing too, all 10 tabs will use the same column letters and this config gets dramatically simpler.",
   "tabs": {
     "miramar": {
       "customer_id": "34573-11-256767",
@@ -16,8 +16,8 @@
       "ship_to_name": "Hotel Westin Playa Bonita",
       "ship_to_address": "Km. 6 Camino a Veracruz",
       "ship_to_city": "Panama",
-      "client_col": "C", "desc_col": "D", "qty_col": "G", "days_col": "I", "audico_u_col": "K", "total_col": "L",
-      "skip_rows": [335]
+      "client_col": "C", "desc_col": "D", "qty_col": "E", "days_col": "G", "audico_u_col": "I", "total_col": "J",
+      "skip_rows": []
     },
     "wce": {
       "customer_id": "1135843-1-568374",
@@ -26,7 +26,7 @@
       "ship_to_address": "Avenida Centenario",
       "ship_to_city": "Panama",
       "client_col": "C", "desc_col": "D", "qty_col": "E", "days_col": "G", "audico_u_col": "I", "total_col": "J",
-      "skip_rows": [85, 87, 89, 91]
+      "skip_rows": []
     },
     "le meridien": {
       "customer_id": "1343809-1-615640",
@@ -89,7 +89,7 @@
       "ship_to_address": "Gamboa",
       "ship_to_city": "Panama",
       "client_col": "C", "desc_col": "E", "qty_col": "F", "days_col": "H", "audico_u_col": null, "total_col": "I",
-      "_note": "panamazing has no AUDICO U column; the I column is already the audico-share total. unit_price is computed as total/(qty*days).",
+      "_note": "REMAINING EXCEPTION: panamazing does not yet follow the standard column layout. Headers say C=DESCRIPCION but C actually holds the client name; the description is in E with no header. There is no AUDICO U column — the I (TOTAL) column is already the 50% Audico share. When operations standardizes panamazing to match the other tabs, change to: client_col=C, desc_col=D, qty_col=E, days_col=G, audico_u_col=I, total_col=J.",
       "skip_rows": []
     }
   },
