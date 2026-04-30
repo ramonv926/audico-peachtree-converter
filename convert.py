@@ -546,6 +546,184 @@ def _add_item_if_present(sheet, row, desc_col, qty_col, days_col, audico_u_col, 
 
 
 # ────────────────────────────────────────────────────────────────────────────
+# Dream Plaza format — separate processing path
+#
+# Dream Plaza files are structurally different from the standard EC files:
+#   - Single tab (any name)
+#   - 9 columns: B/C/D/E/F/G/H/I (no AUDICO U column at I; AUDICO% is at I)
+#   - Audico share is 70% (not 50%)
+#   - Always bills DR PROPERTY SERVICES CORP (one fixed customer)
+#
+# This processing path is INTENTIONALLY SEPARATE from the EC processing so
+# the well-tested EC code path is not at risk of regression.
+# ────────────────────────────────────────────────────────────────────────────
+
+def is_dreamsplaza_file(wb, hotel_tabs_lower):
+    """
+    Detect if a workbook is a Dream Plaza single-tab file.
+
+    Returns True if:
+      - workbook has exactly one tab (or one tab plus 'resumen'-like ignorable tabs), AND
+      - the tab name does not match any hotel mapping name, AND
+      - the tab has the expected Dream Plaza shape (column I header contains 'AUDICO%')
+
+    `hotel_tabs_lower` is the set of lowercase tab names from hotel_mapping.json.
+    """
+    # Filter out ignorable tabs
+    real_tabs = [s for s in wb.sheetnames if s.lower().strip() not in {"resumen"}]
+    if len(real_tabs) != 1:
+        return False
+
+    tab_name = real_tabs[0]
+    if tab_name.lower().strip() in hotel_tabs_lower:
+        return False  # this is a single-tab EC file with a known hotel — handle as EC
+
+    # Check the column I header — should be AUDICO% (without U)
+    sheet = wb[tab_name]
+    # Look in rows 1-12 for a header row containing CLIENTE / DESCRIPCION
+    for r in range(1, 13):
+        c_val = sheet.cell(row=r, column=3).value
+        if c_val and "CLIENTE" in str(c_val).upper():
+            i_val = sheet.cell(row=r, column=9).value
+            if i_val and "%" in str(i_val):
+                return True
+            return False
+    return False
+
+
+def extract_quotes_dreamsplaza(sheet, sheet_data, dp_config, fallback_year, fallback_month):
+    """
+    Extract quotes from a Dream Plaza single-tab file.
+    Same yellow rule as EC, but unit price comes from COSTO × audico_share_rate
+    (since Dream Plaza files have no AUDICO U column).
+    Returns (quotes, review_flags).
+    """
+    client_col = col_letter_to_idx(dp_config["client_col"])
+    desc_col = col_letter_to_idx(dp_config["desc_col"])
+    qty_col = col_letter_to_idx(dp_config["qty_col"])
+    cost_col = col_letter_to_idx(dp_config["cost_col"])
+    days_col = col_letter_to_idx(dp_config["days_col"])
+    total_col = col_letter_to_idx(dp_config["total_col"])
+    audico_pct_col = col_letter_to_idx(dp_config["audico_pct_col"])
+    audico_share_rate = float(dp_config.get("audico_share_rate", 0.70))
+    date_col = 2  # column B
+
+    quotes = []
+    review_flags = []
+    current_quote = None
+    blank_row_streak = 0
+    BLANK_ROWS_TO_CLOSE = 3
+
+    discount_keywords = [
+        "debitar", "descuento", "discount", "credito", "crédito",
+        "nota de credito", "nota de crédito", "rebaja", "ajuste",
+        "devolu", "reembolso", "refund",
+    ]
+
+    def _row_is_blank(row):
+        for c in (client_col, desc_col, qty_col, total_col):
+            v = sheet_data.cell(row=row, column=c).value
+            if v is not None and str(v).strip():
+                return False
+        return True
+
+    def _add_dreamsplaza_item(row, quote):
+        desc = sheet_data.cell(row=row, column=desc_col).value
+        if desc is None or not str(desc).strip():
+            return
+        desc_str = str(desc).strip()
+        qty = to_float(sheet_data.cell(row=row, column=qty_col).value, 1.0) or 1.0
+        days = to_float(sheet_data.cell(row=row, column=days_col).value, 1.0) or 1.0
+        cost = to_float(sheet_data.cell(row=row, column=cost_col).value, 0.0)
+        source_audico_pct = to_float(sheet_data.cell(row=row, column=audico_pct_col).value, 0.0)
+        # Unit price for the quote = COSTO × audico_share_rate (the 70% piece)
+        unit_price = cost * audico_share_rate
+        quote["items"].append({
+            "row": row,
+            "description": desc_str,
+            "qty": qty,
+            "days": days,
+            "unit_price": unit_price,
+            "computed_total": unit_price * qty * days,
+            "source_total": source_audico_pct,  # the I column has the source's calculation; use for cross-check
+        })
+
+    for row in range(11, sheet.max_row + 1):
+        client_cell = sheet.cell(row=row, column=client_col)
+        client_val = client_cell.value
+        client_val_str = str(client_val).strip() if client_val is not None else ""
+
+        # Blank-row tracking
+        if _row_is_blank(row):
+            blank_row_streak += 1
+            if blank_row_streak >= BLANK_ROWS_TO_CLOSE and current_quote is not None:
+                quotes.append(current_quote)
+                current_quote = None
+            continue
+        else:
+            blank_row_streak = 0
+
+        # Discount keyword detection (same as EC path)
+        for c in range(1, sheet.max_column + 1):
+            v = sheet_data.cell(row=row, column=c).value
+            if v is None:
+                continue
+            s = str(v).lower()
+            for kw in discount_keywords:
+                if kw in s:
+                    review_flags.append({
+                        "tab": sheet.title,
+                        "fila": row,
+                        "columna": get_column_letter(c),
+                        "categoria": "Posible descuento/crédito (Dream Plaza)",
+                        "contenido": str(v)[:200],
+                        "monto": "",
+                        "palabra_clave": kw,
+                        "accion_recomendada": "Revisar manualmente — el sistema NO incluye descuentos en las cotizaciones automáticamente.",
+                    })
+                    break
+            else:
+                continue
+            break
+
+        # New quote starts on a yellow CLIENTE row
+        if client_val_str and is_yellow(client_cell) and client_val_str.upper() != "CLIENTE":
+            if current_quote is not None:
+                quotes.append(current_quote)
+            date_raw = sheet_data.cell(row=row, column=date_col).value
+            parsed = parse_event_date(date_raw, fallback_year, fallback_month)
+            current_quote = {
+                "client_row": row,
+                "client_name": client_val_str,
+                "event_date_raw": date_raw,
+                "event_date": parsed,
+                "items": [],
+                "skipped": False,
+                "skip_reason": "",
+            }
+            _add_dreamsplaza_item(row, current_quote)
+            continue
+
+        # Non-yellow CLIENTE row closes the current quote
+        if client_val_str and client_val_str.upper() != "CLIENTE" and not is_yellow(client_cell):
+            if current_quote is not None:
+                quotes.append(current_quote)
+                current_quote = None
+            continue
+
+        # Continuation item inside the current quote
+        if current_quote is not None:
+            desc_val = sheet_data.cell(row=row, column=desc_col).value
+            if desc_val is not None and str(desc_val).strip():
+                _add_dreamsplaza_item(row, current_quote)
+
+    if current_quote is not None:
+        quotes.append(current_quote)
+
+    return quotes, review_flags
+
+
+# ────────────────────────────────────────────────────────────────────────────
 # CSV row builders
 # ────────────────────────────────────────────────────────────────────────────
 
@@ -784,47 +962,59 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
     total_quotes_written = 0
     quote_sequence = 0  # Increments per generated quote — used as temporary Quote #/Invoice # in combined file
 
-    for sheet_name in wb.sheetnames:
-        norm = sheet_name.lower().strip()
-        if norm in ignore_tabs:
-            continue
-        if norm not in tabs_cfg:
-            warnings.append(f"Pestaña '{sheet_name}' no está en hotel_mapping.json — se omitió.")
-            continue
+    # ── File-type detection: Dream Plaza vs. standard EC ──
+    # If the file is a Dream Plaza single-tab file (different layout, different customer, 70% rate),
+    # route to the dedicated Dream Plaza processor. Otherwise, treat as standard EC.
+    detected_file_type = "EC"
+    hotel_tabs_lower = {k.lower().strip() for k in tabs_cfg.keys()}
+    dp_config = None
+    dp_config_path = Path(config_path).parent / "dreamsplaza_mapping.json"
+    if dp_config_path.exists():
+        try:
+            with open(dp_config_path) as f:
+                dp_config = json.load(f)
+        except Exception as e:
+            warnings.append(f"No se pudo leer dreamsplaza_mapping.json: {e}")
 
-        tab_cfg = tabs_cfg[norm]
+    if dp_config and is_dreamsplaza_file(wb, hotel_tabs_lower):
+        detected_file_type = "DREAMS_PLAZA"
 
-        # Customer verification
-        if known_customer_ids is not None and tab_cfg["customer_id"] not in known_customer_ids:
-            warnings.append(
-                f"Pestaña '{sheet_name}': el ID de cliente {tab_cfg['customer_id']} NO existe en la "
-                f"lista actual de Peachtree. La importación podría fallar hasta que se cree el cliente."
-            )
-
-        sheet = wb[sheet_name]          # has fill info
-        sheet_data = wb_data[sheet_name]  # has computed formula values
+    # ── DREAM PLAZA PATH ──
+    if detected_file_type == "DREAMS_PLAZA":
+        # Single-tab file. Process the one real tab.
+        real_tabs = [s for s in wb.sheetnames if s.lower().strip() not in ignore_tabs]
+        sheet_name = real_tabs[0]
+        sheet = wb[sheet_name]
+        sheet_data = wb_data[sheet_name]
         header_date = extract_header_fecha(sheet)
         fallback_year = header_date[0] if header_date else run_date.year
         fallback_month = header_date[1] if header_date else run_date.month
 
-        quotes, sheet_review_flags = extract_quotes_from_sheet(sheet, sheet_data, tab_cfg, fallback_year, fallback_month)
+        # Customer verification
+        if known_customer_ids is not None and dp_config["customer_id"] not in known_customer_ids:
+            warnings.append(
+                f"Dream Plaza: el ID de cliente {dp_config['customer_id']} NO existe en la "
+                f"lista actual de Peachtree. La importación podría fallar hasta que se cree el cliente."
+            )
+
+        quotes, sheet_review_flags = extract_quotes_dreamsplaza(
+            sheet, sheet_data, dp_config, fallback_year, fallback_month
+        )
         all_review_flags.extend(sheet_review_flags)
+
+        # Build a tab_cfg compatible with build_quote_rows (which expects the EC format)
+        tab_cfg = {
+            "customer_id": dp_config["customer_id"],
+            "customer_name": dp_config["customer_name"],
+            "ship_to_name": dp_config["ship_to_name"],
+            "ship_to_address": dp_config["ship_to_address"],
+            "ship_to_city": dp_config["ship_to_city"],
+        }
 
         tab_out_dir = out_dir / slugify(sheet_name, 30)
         tab_out_dir.mkdir(exist_ok=True)
 
         for q in quotes:
-            # Skip if configured
-            if q["skipped"]:
-                not_processed_rows.append({
-                    "tab": sheet_name, "row": q["client_row"], "client": q["client_name"],
-                    "event_date_raw": str(q["event_date_raw"] or ""),
-                    "items": len(q["items"]),
-                    "reason": q["skip_reason"],
-                })
-                continue
-
-            # Skip empty quotes (yellow row but no items found)
             if not q["items"]:
                 not_processed_rows.append({
                     "tab": sheet_name, "row": q["client_row"], "client": q["client_name"],
@@ -834,39 +1024,34 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
                 })
                 continue
 
-            # Safety check: recomputed vs source totals
+            # Safety check: recomputed vs source totals (the I column has source AUDICO%)
             for it in q["items"]:
                 if it["source_total"] and abs(it["computed_total"] - it["source_total"]) > 0.01:
                     warnings.append(
-                        f"{sheet_name} R{it['row']} '{q['client_name']}' — partida '{it['description']}': "
-                        f"total recalculado (unit×cant×días = {it['computed_total']:.2f}) "
-                        f"no coincide con columna J del archivo ({it['source_total']:.2f})."
+                        f"Dream Plaza R{it['row']} '{q['client_name']}' — partida '{it['description']}': "
+                        f"total recalculado ({it['computed_total']:.2f}) "
+                        f"no coincide con columna I del archivo ({it['source_total']:.2f})."
                     )
 
-            # Warn on unparseable dates
             if not q["event_date"]["parsed_ok"] and q["event_date_raw"]:
                 warnings.append(
-                    f"{sheet_name} R{q['client_row']} '{q['client_name']}' — no se pudo interpretar la fecha "
+                    f"Dream Plaza R{q['client_row']} '{q['client_name']}' — no se pudo interpretar la fecha "
                     f"'{q['event_date_raw']}'; se incluye tal cual en la nota de la cotización."
                 )
 
             rows, subtotal, tax, total = build_quote_rows(q, tab_cfg, defaults, run_date, good_thru_date)
 
-            # Assign a temporary sequence number for this quote (used in combined CSV to group its rows)
             quote_sequence += 1
             temp_quote_id = f"TMP-{quote_sequence:04d}"
 
-            # Filename
             event_date_part = (
                 q["event_date"]["start_date"].strftime("%Y-%m-%d")
                 if q["event_date"]["start_date"] else "nodate"
             )
-            fname = f"{slugify(sheet_name, 20)}_R{q['client_row']}_{slugify(q['client_name'], 30)}_{event_date_part}.csv"
+            fname = f"dreamsplaza_R{q['client_row']}_{slugify(q['client_name'], 30)}_{event_date_part}.csv"
             fpath = tab_out_dir / fname
             write_quote_csv(rows, fpath)
 
-            # Build combined-CSV version with temp_quote_id as Invoice/CM # and Quote #
-            # so Sage knows where one quote ends and the next begins on bulk import
             for r in rows:
                 combined_row = dict(r)
                 combined_row["Invoice/CM #"] = temp_quote_id
@@ -874,7 +1059,7 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
                 combined_rows.append(combined_row)
 
             summary_rows.append({
-                "tab": sheet_name,
+                "tab": f"Dream Plaza ({sheet_name})",
                 "row": q["client_row"],
                 "client": q["client_name"],
                 "event_date": q["event_date"]["note_es"],
@@ -886,6 +1071,117 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
                 "file": str(fpath.relative_to(out_dir)),
             })
             total_quotes_written += 1
+
+        # Skip the EC processing loop entirely
+        # (drop down to the writeout section at the end of the function)
+        ec_processing = False
+    else:
+        ec_processing = True
+
+    # ── STANDARD EC PATH (unchanged from before) ──
+    if ec_processing:
+        for sheet_name in wb.sheetnames:
+            norm = sheet_name.lower().strip()
+            if norm in ignore_tabs:
+                continue
+            if norm not in tabs_cfg:
+                warnings.append(f"Pestaña '{sheet_name}' no está en hotel_mapping.json — se omitió.")
+                continue
+
+            tab_cfg = tabs_cfg[norm]
+
+            # Customer verification
+            if known_customer_ids is not None and tab_cfg["customer_id"] not in known_customer_ids:
+                warnings.append(
+                    f"Pestaña '{sheet_name}': el ID de cliente {tab_cfg['customer_id']} NO existe en la "
+                    f"lista actual de Peachtree. La importación podría fallar hasta que se cree el cliente."
+                )
+
+            sheet = wb[sheet_name]          # has fill info
+            sheet_data = wb_data[sheet_name]  # has computed formula values
+            header_date = extract_header_fecha(sheet)
+            fallback_year = header_date[0] if header_date else run_date.year
+            fallback_month = header_date[1] if header_date else run_date.month
+
+            quotes, sheet_review_flags = extract_quotes_from_sheet(sheet, sheet_data, tab_cfg, fallback_year, fallback_month)
+            all_review_flags.extend(sheet_review_flags)
+
+            tab_out_dir = out_dir / slugify(sheet_name, 30)
+            tab_out_dir.mkdir(exist_ok=True)
+
+            for q in quotes:
+                # Skip if configured
+                if q["skipped"]:
+                    not_processed_rows.append({
+                        "tab": sheet_name, "row": q["client_row"], "client": q["client_name"],
+                        "event_date_raw": str(q["event_date_raw"] or ""),
+                        "items": len(q["items"]),
+                        "reason": q["skip_reason"],
+                    })
+                    continue
+
+                # Skip empty quotes (yellow row but no items found)
+                if not q["items"]:
+                    not_processed_rows.append({
+                        "tab": sheet_name, "row": q["client_row"], "client": q["client_name"],
+                        "event_date_raw": str(q["event_date_raw"] or ""),
+                        "items": 0,
+                        "reason": "Fila CLIENTE amarilla sin partidas debajo",
+                    })
+                    continue
+
+                # Safety check: recomputed vs source totals
+                for it in q["items"]:
+                    if it["source_total"] and abs(it["computed_total"] - it["source_total"]) > 0.01:
+                        warnings.append(
+                            f"{sheet_name} R{it['row']} '{q['client_name']}' — partida '{it['description']}': "
+                            f"total recalculado (unit×cant×días = {it['computed_total']:.2f}) "
+                            f"no coincide con columna J del archivo ({it['source_total']:.2f})."
+                        )
+
+                # Warn on unparseable dates
+                if not q["event_date"]["parsed_ok"] and q["event_date_raw"]:
+                    warnings.append(
+                        f"{sheet_name} R{q['client_row']} '{q['client_name']}' — no se pudo interpretar la fecha "
+                        f"'{q['event_date_raw']}'; se incluye tal cual en la nota de la cotización."
+                    )
+
+                rows, subtotal, tax, total = build_quote_rows(q, tab_cfg, defaults, run_date, good_thru_date)
+
+                # Assign a temporary sequence number for this quote (used in combined CSV to group its rows)
+                quote_sequence += 1
+                temp_quote_id = f"TMP-{quote_sequence:04d}"
+
+                # Filename
+                event_date_part = (
+                    q["event_date"]["start_date"].strftime("%Y-%m-%d")
+                    if q["event_date"]["start_date"] else "nodate"
+                )
+                fname = f"{slugify(sheet_name, 20)}_R{q['client_row']}_{slugify(q['client_name'], 30)}_{event_date_part}.csv"
+                fpath = tab_out_dir / fname
+                write_quote_csv(rows, fpath)
+
+                # Build combined-CSV version with temp_quote_id as Invoice/CM # and Quote #
+                # so Sage knows where one quote ends and the next begins on bulk import
+                for r in rows:
+                    combined_row = dict(r)
+                    combined_row["Invoice/CM #"] = temp_quote_id
+                    combined_row["Quote #"] = temp_quote_id
+                    combined_rows.append(combined_row)
+
+                summary_rows.append({
+                    "tab": sheet_name,
+                    "row": q["client_row"],
+                    "client": q["client_name"],
+                    "event_date": q["event_date"]["note_es"],
+                    "n_items": len(q["items"]),
+                    "subtotal": money(subtotal),
+                    "itbms": money(tax),
+                    "total": money(total),
+                    "temp_quote_id": temp_quote_id,
+                    "file": str(fpath.relative_to(out_dir)),
+                })
+                total_quotes_written += 1
 
     # Write combined CSV — one master file with ALL quotes for bulk import into Sage
     # Same 59-column format, no header row, just all rows from all quotes back-to-back.
@@ -937,6 +1233,7 @@ def run_conversion(xlsx_path, config_path="config/hotel_mapping.json", out_dir="
         "not_processed": not_processed_rows,
         "warnings": warnings,
         "review_flags": all_review_flags,
+        "file_type": detected_file_type,
         "out_dir": out_dir,
     }
 
