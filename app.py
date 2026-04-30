@@ -43,11 +43,10 @@ with st.sidebar:
     st.header("ℹ️ Cómo usar")
     st.markdown(
         """
-        1. **Sube el archivo EC** del mes (ejemplo: `EC_03_-_Marzo_2026.xlsx`)
-        2. *(Opcional)* Sube la lista de clientes más reciente de Peachtree
-        3. Dale a **Convertir**
-        4. Revisa el resumen abajo
-        5. Descarga el **ZIP con todos los CSVs** e impórtalos a Peachtree
+        1. **Sube el archivo .xlsx** (EC mensual o Dreams Plaza — el sistema detecta el tipo automáticamente)
+        2. Dale a **Convertir**
+        3. Revisa el resumen abajo
+        4. Descarga el **archivo único** e impórtalo a Peachtree
 
         Peachtree genera automáticamente:
         - Número de cotización
@@ -87,26 +86,19 @@ with st.sidebar:
 # Main form
 # ────────────────────────────────────────────────────────────────────────────
 
-st.subheader("1. Sube el archivo EC del mes")
+st.subheader("1. Sube el archivo")
 ec_file = st.file_uploader(
-    "Archivo EC (.xlsx)",
+    "Archivo a procesar (.xlsx)",
     type=["xlsx"],
-    help="El archivo mensual con una pestaña por hotel. Ejemplo: EC_03_-_Marzo_2026.xlsx",
+    help=(
+        "El sistema detecta automáticamente el tipo de archivo:\n"
+        "• **EC mensual** (varias pestañas, una por hotel)\n"
+        "• **Dreams Plaza** (una sola pestaña, cliente directo DR PROPERTY SERVICES CORP)"
+    ),
     key="ec_upload",
 )
 
-st.subheader("2. (Opcional) Lista de clientes actualizada")
-customer_file = st.file_uploader(
-    "LISTA_DE_CLIENTES_POR_ID.xlsx",
-    type=["xlsx"],
-    help=(
-        "Sirve para verificar que los IDs de cliente en Peachtree siguen existiendo. "
-        "Si no la subes, la conversión igual funciona — sólo no valida IDs."
-    ),
-    key="customer_upload",
-)
-
-st.subheader("3. Convertir")
+st.subheader("2. Convertir")
 run_btn = st.button("🚀 Convertir a cotizaciones Peachtree", type="primary", use_container_width=True)
 
 
@@ -132,14 +124,9 @@ if run_btn:
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = Path(tmpdir)
-        # Write uploaded files to tmp
+        # Write uploaded file to tmp
         ec_path = tmp / ec_file.name
         ec_path.write_bytes(ec_file.getbuffer())
-
-        customer_path = None
-        if customer_file is not None:
-            customer_path = tmp / customer_file.name
-            customer_path.write_bytes(customer_file.getbuffer())
 
         out_path = tmp / "out"
 
@@ -152,7 +139,6 @@ if run_btn:
                     xlsx_path=str(ec_path),
                     config_path=str(config_path),
                     out_dir=str(out_path),
-                    customer_list_path=str(customer_path) if customer_path else None,
                     run_date=override_date,
                 )
             except Exception as e:
@@ -161,6 +147,19 @@ if run_btn:
                 st.stop()
 
         # ─── Results ───
+        # Show detected file type prominently
+        ft = result.get("file_type", "EC")
+        if ft == "DREAMS_PLAZA":
+            st.info(
+                "📄 **Tipo de archivo detectado: Dreams Plaza** — "
+                "una sola pestaña, cliente fijo (DR PROPERTY SERVICES CORP), Audico al 70%."
+            )
+        else:
+            st.info(
+                "📄 **Tipo de archivo detectado: EC mensual** — "
+                "múltiples hoteles, Audico al 50%."
+            )
+
         n_review = len(result.get("review_flags", []))
         if n_review > 0:
             st.success(
