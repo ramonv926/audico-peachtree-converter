@@ -1,0 +1,18 @@
+{
+  "_comment": "Configuration for the Dream Plaza standalone file. Unlike the EC files (which have 10 hotel tabs and bill each hotel as the customer at 50% Audico share), Dream Plaza files have ONE tab and bill DR PROPERTY SERVICES CORP directly at a 70% Audico share. Detection: single-tab file with column I labeled 'AUDICO%' and NO AUDICO U column. The audico_share_rate is the fraction of the customer-facing total that Audico keeps (and quotes the customer for).",
+  "customer_id": "155662997-2-2018",
+  "customer_name": "DR PROPERTY SERVICES CORP",
+  "ship_to_name": "Dreams Plaza",
+  "ship_to_address": "Obarrio, Calle 58 Este",
+  "ship_to_city": "Panama",
+  "audico_share_rate": 0.70,
+  "_layout_note": "9-column layout: B=FECHA, C=CLIENTE (yellow=billable), D=DESCRIPCION, E=CANT, F=COSTO, G=DIA(S), H=TOTAL, I=AUDICO% (not AUDICO U). Unit price for the quote = COSTO × audico_share_rate.",
+  "client_col": "C",
+  "desc_col": "D",
+  "qty_col": "E",
+  "cost_col": "F",
+  "days_col": "G",
+  "total_col": "H",
+  "audico_pct_col": "I",
+  "_detection": "A file is treated as Dream Plaza if: (a) it has exactly one tab, AND (b) the tab does not match any name in hotel_mapping.json's tabs list, AND (c) column I header text contains 'AUDICO%' (or '%' but not 'U')."
+}
