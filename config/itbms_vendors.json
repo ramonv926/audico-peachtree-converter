@@ -1,0 +1,253 @@
+{
+  "declarant": {
+    "ruc": "155635073-2-2016",
+    "nombre": "AUDICO PANAMA, S.A."
+  },
+  "itbms_rate": 0.07,
+  "_comment": "concepto_overrides: por nombre de proveedor. 1=bienes,2=servicios basicos,3=honorarios,4=alquileres,5=cargos bancarios,6=exterior,7=consolidados. Si un proveedor no esta en 'vendors', la fila sale BLOQUEADA para que la completes aqui.",
+  "concepto_overrides": {
+    "BANCO GENERAL": 5,
+    "CABLE AND WIRELESS PANAMA": 2,
+    "GRUPO DE COMUNICACIONES DIGITALES, S.A.": 2
+  },
+  "vendors": [
+    {
+      "nombre": "ASSETS TRUST & CORPORATE",
+      "ruc": "2480734-1-3185",
+      "dv": "63",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUDIOMIX DORADO, S.A.",
+      "ruc": "155700081-2-2020",
+      "dv": "10",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUTO CENTRO, S.A.",
+      "ruc": "603-203-124985",
+      "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "BANCO GENERAL",
+      "ruc": "280-134-61098",
+      "dv": "02",
+      "tipo": "J",
+      "concepto": 5
+    },
+    {
+      "nombre": "CABLE AND WIRELESS PANAMA",
+      "ruc": "46004-187-302083",
+      "dv": "96",
+      "tipo": "J",
+      "concepto": 2
+    },
+    {
+      "nombre": "DELIVERY HERO PANAMA (E. COMMERCE)S.A.",
+      "ruc": "2679372-1-844914",
+      "dv": "73",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DELIVERY HERO PANAMA(E-COMMERCE)S.A.",
+      "ruc": "2679372-1-844914",
+      "dv": "73",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELECTRONICA ATLANTICO",
+      "ruc": "378345-1-421317",
+      "dv": "98",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GEO F. NOVEY, INC",
+      "ruc": "138-289-35920",
+      "dv": "04",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GRUPO DE COMUNICACIONES DIGITALES, S.A.",
+      "ruc": "47028-19-305805",
+      "dv": "18",
+      "tipo": "J",
+      "concepto": 2
+    },
+    {
+      "nombre": "GRUPO DEW COMUNICACINES DIGITALES, S.A.",
+      "ruc": "47028-19-305805",
+      "dv": "18",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GRUPO Q INVESTMENT, S.A.",
+      "ruc": "540-546-117346",
+      "dv": "08",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "IMPORTADORA RICAMAR, S.A.",
+      "ruc": "434-15-93796",
+      "dv": "22",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INMOBILIARIA DON ANTOPNIO, S.A.",
+      "ruc": "541-81-118009",
+      "dv": "06",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "IRVING E. JIMENEZ Z",
+      "ruc": "8-700-1300",
+      "dv": "72",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JELLINI, S.A.",
+      "ruc": "9857-220-101047",
+      "dv": "81",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "KING LEUNG FUNG CHUNG",
+      "ruc": "N-20-586",
+      "dv": "12",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LA COCINA DE SOFY, S.A.",
+      "ruc": "43946-81-293527",
+      "dv": "36",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MACRO GROUP, S.A",
+      "ruc": "912952-1-517511",
+      "dv": "51",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MEETING & SHOW TECHNOLOGIES, S A",
+      "ruc": "220-1-363731",
+      "dv": "79",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MI PROVEEDOR",
+      "ruc": "4-704-863",
+      "dv": "06",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "OCEANPARKING, S.A.",
+      "ruc": "155703889-2-2023",
+      "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ONSTAGE S A",
+      "ruc": "155711485-2-2021",
+      "dv": "74",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANA COMPU, S.A.",
+      "ruc": "155646971-2-2017",
+      "dv": "46",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANAFOTO, S.A.",
+      "ruc": "66159-91-363381",
+      "dv": "05",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PREASA CAPITAL, S.A.",
+      "ruc": "155764340-2-2025",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PRICESMART PANAMA SA",
+      "ruc": "898-241-102416",
+      "dv": "63",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "REPUESTOS TECNI-PARTES",
+      "ruc": "N-20-212",
+      "dv": "98",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "REPUESTOS, PARABRISAS Y CARROCERIA, S.A.",
+      "ruc": "10342-10-105577",
+      "dv": "17",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "RESTAURANTE BENDICION",
+      "ruc": "155735853-2-2023",
+      "dv": "69",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SERVICIOS ELECTRICOS, S.A.",
+      "ruc": "73-561-21585",
+      "dv": "84",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SILABA MOTORS, S.A.",
+      "ruc": "580-422-120054",
+      "dv": "92",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SOLUCIONES DE LOCALIZACION TRACKER S A",
+      "ruc": "1566548-1-659951",
+      "dv": "89",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SPECTRUM AUDIOVISUALES",
+      "ruc": "8-522-1308",
+      "dv": "19",
+      "tipo": "N",
+      "concepto": 1
+    }
+  ]
+}
