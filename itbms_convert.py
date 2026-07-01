@@ -147,9 +147,27 @@ def load_vendors(config_path):
             master[norm_name(alias)] = rec
 
     overrides = {norm_name(k): int(val) for k, val in cfg.get("concepto_overrides", {}).items()}
-    declarant = (cfg.get("declarant") or {}).get("ruc")
+    decls = load_declarants(config_path, _cfg=cfg)
+    declarant = decls[0]["ruc"] if decls else (cfg.get("declarant") or {}).get("ruc")
     rate = float(cfg.get("itbms_rate", DEFAULT_ITBMS_RATE))
     return master, overrides, declarant, rate
+
+
+def load_declarants(config_path, _cfg=None):
+    """Lista de empresas que pueden presentar (declarantes): [{ruc, dv, nombre}, ...].
+    Soporta 'declarants' (lista) o el 'declarant' (singular, legado)."""
+    if _cfg is None:
+        with open(config_path, encoding="utf-8") as f:
+            _cfg = json.load(f)
+    decls = _cfg.get("declarants")
+    if decls:
+        return [{"ruc": str(d["ruc"]).strip(), "dv": str(d.get("dv", "")).strip(),
+                 "nombre": d.get("nombre", d["ruc"])} for d in decls]
+    d = _cfg.get("declarant")
+    if d:
+        return [{"ruc": str(d["ruc"]).strip(), "dv": str(d.get("dv", "")).strip(),
+                 "nombre": d.get("nombre", d["ruc"])}]
+    return []
 
 
 def lookup_master(name: str, master: dict):
@@ -173,7 +191,7 @@ def _gl_sheet(wb):
     return wb[wb.sheetnames[0]]  # fallback: primera hoja
 
 
-def transform_rows(gl_rows, master, overrides, declarant_ruc, rate):
+def transform_rows(gl_rows, master, overrides, self_rucs, rate):
     """gl_rows: tuplas (acct_id, acct_desc, date, ref, jrnl, tdesc, debit, credit, balance).
     Devuelve (lines, stats). Cada line es un dict listo para escribir / mostrar."""
     lines = []
@@ -219,10 +237,10 @@ def transform_rows(gl_rows, master, overrides, declarant_ruc, rate):
                 ln["blocked"] = True
                 ln["reasons"].append(f"Proveedor sin RUC/DV en el maestro: '{nombre}'")
 
-        # sanity: el RUC del proveedor no puede ser el del propio declarante
-        if declarant_ruc and ln["ruc"] == declarant_ruc:
+        # sanity: el RUC del proveedor no puede ser el de una empresa del grupo (declarante)
+        if self_rucs and ln["ruc"] in self_rucs:
             ln["blocked"] = True
-            ln["reasons"].append(f"RUC = RUC del declarante ({declarant_ruc}); error de captura, revisar")
+            ln["reasons"].append(f"RUC = empresa del grupo/declarante ({ln['ruc']}); error de captura, revisar")
 
         ln["tipo"] = infer_tipo(ln["ruc"]) if ln["ruc"] else ""
         ln["concepto"] = overrides.get(norm_name(ln["nombre"]),
@@ -313,26 +331,53 @@ REQUIRED_LABELS = [
 ]
 
 
-def missing_fields(rec, declarant_ruc=None):
-    """Lista de campos obligatorios que faltan en una fila (vacía = fila OK)."""
+def _as_ruc_set(declarant_rucs):
+    """Acepta None, str, o coleccion -> set de RUCs 'propios' (del grupo)."""
+    if declarant_rucs is None:
+        return set()
+    if isinstance(declarant_rucs, str):
+        return {declarant_rucs}
+    return set(declarant_rucs)
+
+
+def detect_declarant_from_gl(gl_rows, declarants):
+    """Detecta que empresa presenta, buscando su RUC en la fila de pago al fisco
+    (Tesoro Nacional) del Mayor. Devuelve el RUC detectado o None."""
+    import re as _re
+    for r in gl_rows:
+        tdesc = r[5] if len(r) > 5 else None
+        if not is_treasury(tdesc):
+            continue
+        digits = _re.sub(r"\\D", "", str(tdesc))
+        for d in declarants:
+            principal = _re.sub(r"\\D", "", str(d["ruc"]).split("-")[0])
+            if principal and principal in digits:
+                return d["ruc"]
+    return None
+
+
+def missing_fields(rec, declarant_rucs=None):
+    """Lista de campos obligatorios que faltan en una fila (vacía = fila OK).
+    declarant_rucs: str o coleccion de RUCs propios del grupo (AUDICO, 3S)."""
+    self_rucs = _as_ruc_set(declarant_rucs)
     miss = []
     for key, label in REQUIRED_LABELS:
         v = rec.get(key)
         if v is None or str(v).strip() == "":
             miss.append(label)
     ruc = str(rec.get("ruc") or "").strip()
-    if ruc and declarant_ruc and ruc == declarant_ruc:
+    if ruc and ruc in self_rucs:
         miss.append("RUC = declarante (corregir)")
     return miss
 
 
-def _row_status(rec, declarant_ruc=None):
+def _row_status(rec, declarant_rucs=None):
     """Texto de estado para el grid editable."""
-    miss = missing_fields(rec, declarant_ruc)
+    miss = missing_fields(rec, declarant_rucs)
     return "OK" if not miss else "Falta: " + ", ".join(miss)
 
 
-def lines_to_editor_rows(lines, rate=DEFAULT_ITBMS_RATE, declarant_ruc=None):
+def lines_to_editor_rows(lines, rate=DEFAULT_ITBMS_RATE, declarant_rucs=None):
     """Aplana las líneas internas a filas planas para st.data_editor."""
     rows = []
     for ln in lines:
@@ -342,12 +387,12 @@ def lines_to_editor_rows(lines, rate=DEFAULT_ITBMS_RATE, declarant_ruc=None):
             "concepto": int(ln["concepto"]), "itbms": float(ln["itbms"]),
             "monto": round(float(ln["itbms"]) / rate, 2),
         }
-        rec["estado"] = _row_status(rec, declarant_ruc)
+        rec["estado"] = _row_status(rec, declarant_rucs)
         rows.append(rec)
     return rows
 
 
-def finalize_records(records, declarant_ruc=None, rate=DEFAULT_ITBMS_RATE):
+def finalize_records(records, declarant_rucs=None, rate=DEFAULT_ITBMS_RATE):
     """Toma las filas editadas (lista de dicts) y devuelve (lines, pending).
     Normaliza dv, infiere tipo si falta, recalcula monto y marca bloqueadas."""
     lines, pending = [], 0
@@ -367,7 +412,7 @@ def finalize_records(records, declarant_ruc=None, rate=DEFAULT_ITBMS_RATE):
             "monto": round(itbms / rate, 2), "itbms": itbms,
             "blocked": False, "reasons": [],
         }
-        miss = missing_fields(rec, declarant_ruc)
+        miss = missing_fields(rec, declarant_rucs)
         if miss:
             ln["blocked"] = True
             ln["reasons"].append("Falta: " + ", ".join(miss))
@@ -400,20 +445,28 @@ def vendor_master_delta(lines, config_path):
 
 
 def run_itbms_conversion(xlsx_path, config_path="config/itbms_vendors.json",
-                         out_dir="./out", period=None, filter_to_period=True):
+                         out_dir="./out", period=None, filter_to_period=True,
+                         declarant_ruc=None):
     """Convierte el General Ledger crudo de Peachtree al Informe 43.
     Devuelve un dict de resultado estructurado (mismo estilo que convert.py)."""
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    master, overrides, declarant_ruc, rate = load_vendors(config_path)
+    master, overrides, cfg_declarant, rate = load_vendors(config_path)
+    declarants = load_declarants(config_path)
+    self_rucs = {d["ruc"] for d in declarants} or ({cfg_declarant} if cfg_declarant else set())
 
     wb = load_workbook(xlsx_path, data_only=True)
     ws = _gl_sheet(wb)
     gl_rows = list(ws.iter_rows(values_only=True))[1:]   # quita encabezado
     wb.close()
 
-    lines, stats = transform_rows(gl_rows, master, overrides, declarant_ruc, rate)
+    # empresa para el NOMBRE del archivo: override explicito > detectada del Mayor > primera configurada
+    file_declarant = (declarant_ruc
+                      or detect_declarant_from_gl(gl_rows, declarants)
+                      or (declarants[0]["ruc"] if declarants else cfg_declarant))
+
+    lines, stats = transform_rows(gl_rows, master, overrides, self_rucs, rate)
 
     # meses presentes en el archivo
     from collections import Counter
@@ -429,7 +482,7 @@ def run_itbms_conversion(xlsx_path, config_path="config/itbms_vendors.json",
         dropped = [ln for ln in lines if ln["fecha"][:6] != period]
         lines = [ln for ln in lines if ln["fecha"][:6] == period]
 
-    decl = (declarant_ruc or "DECLARANTE")
+    decl = (file_declarant or "DECLARANTE")
     out_name = f"Informe43_{decl}_{period}.xlsx"
     out_path = write_informe43(lines, out_dir / out_name)
 
@@ -467,8 +520,10 @@ def run_itbms_conversion(xlsx_path, config_path="config/itbms_vendors.json",
         warnings.append(f"⚠️ NINGUNA fila de compra en {period}. ¿Exportaste el mes correcto del Mayor?")
 
     return {
-        "editor_rows": lines_to_editor_rows(lines, rate, declarant_ruc),
-        "declarant_ruc": declarant_ruc,
+        "editor_rows": lines_to_editor_rows(lines, rate, self_rucs),
+        "declarant_ruc": file_declarant,
+        "self_rucs": sorted(self_rucs),
+        "declarant_detected": detect_declarant_from_gl(gl_rows, declarants) is not None,
         "rows_written": len(resolved),
         "rows_blocked": len(blocked),
         "summary_rows": summary_rows,

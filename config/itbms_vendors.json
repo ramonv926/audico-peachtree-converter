@@ -3,6 +3,17 @@
     "ruc": "155635073-2-2016",
     "nombre": "AUDICO PANAMA, S.A."
   },
+  "declarants": [
+    {
+      "ruc": "155635073-2-2016",
+      "nombre": "AUDICO PANAMA, S.A."
+    },
+    {
+      "ruc": "1797262-1-704732",
+      "dv": "44",
+      "nombre": "SSS MULTILINGUAL SOLUTIONS INC (3S)"
+    }
+  ],
   "itbms_rate": 0.07,
   "_comment": "concepto_overrides: por nombre de proveedor. 1=bienes,2=servicios basicos,3=honorarios,4=alquileres,5=cargos bancarios,6=exterior,7=consolidados. Si un proveedor no esta en 'vendors', la fila sale BLOQUEADA para que la completes aqui.",
   "concepto_overrides": {

@@ -23,7 +23,7 @@ import streamlit as st
 
 from itbms_convert import (
     detect_periods, run_itbms_conversion, finalize_records, missing_fields,
-    vendor_master_delta, write_informe43,
+    vendor_master_delta, write_informe43, load_declarants,
 )
 
 MESES_ES = {1: "ENERO", 2: "FEBRERO", 3: "MARZO", 4: "ABRIL", 5: "MAYO", 6: "JUNIO",
@@ -125,20 +125,37 @@ if st.button("Generar Informe 43", type="primary", use_container_width=True):
             st.exception(e)
             st.stop()
     _df = pd.DataFrame(result["editor_rows"]).drop(columns=["estado"], errors="ignore")
-    _decl = result["declarant_ruc"]
-    _df["falta"] = ["  ".join(missing_fields(r, _decl)) or "OK"
+    _self = result["self_rucs"]
+    _df["falta"] = ["  ".join(missing_fields(r, _self)) or "OK"
                     for r in _df.to_dict("records")]
     ss["itbms_sig"] = f"{gl_file.name}:{period}"
     ss["itbms_initial"] = _df
     ss["itbms_ver"] = 0
     ss["itbms_period"] = result["period"]
-    ss["itbms_decl"] = _decl
+    ss["itbms_decl"] = result["declarant_ruc"]
+    ss["itbms_selfrucs"] = _self
+    ss["itbms_detected"] = result["declarant_detected"]
     ss["itbms_warnings"] = result["warnings"]
 
 # ---------------------------------------------------------- 4. editable grid + gate
 if "itbms_initial" in ss:
     st.divider()
     st.subheader("4. Completa TODO lo que falte")
+
+    # empresa detectada para el nombre del archivo
+    _decl_names = {}
+    try:
+        _decl_names = {d["ruc"]: d["nombre"] for d in load_declarants(CONFIG_PATH)}
+    except Exception:
+        pass
+    _dname = _decl_names.get(ss["itbms_decl"], ss["itbms_decl"])
+    if ss.get("itbms_detected"):
+        st.info(f"Empresa detectada del Mayor: **{_dname}**  (RUC {ss['itbms_decl']}). "
+                "El archivo se nombrara con este RUC.")
+    else:
+        st.warning(f"No se pudo detectar la empresa en el Mayor; se usara **{_dname}** "
+                   f"(RUC {ss['itbms_decl']}) para el nombre del archivo. Si es otra empresa, renombra el archivo al descargarlo.")
+
     st.caption(
         "Todos los campos son **obligatorios**: Tipo, RUC/Cedula, DV, Nombre, Factura y Concepto. "
         "**Fecha** e **ITBMS** vienen del Mayor y no se editan (asi el informe siempre cuadra). "
@@ -147,6 +164,7 @@ if "itbms_initial" in ss:
 
     initial = ss["itbms_initial"]
     decl = ss["itbms_decl"]
+    selfrucs = ss.get("itbms_selfrucs", [decl] if decl else [])
     period = ss["itbms_period"]
 
     edited = st.data_editor(
@@ -177,7 +195,7 @@ if "itbms_initial" in ss:
     # data_editor en cada rerun borra la edicion en curso. La columna "Falta" del
     # grid se refresca solo al presionar "Revisar grilla" (abajo).
     records = edited.to_dict("records")
-    lines, pending = finalize_records(records, declarant_ruc=decl)
+    lines, pending = finalize_records(records, declarant_rucs=selfrucs)
     total_itbms = round(sum(l["itbms"] for l in lines), 2)
 
     # boton para forzar re-validacion: hornea lo editado en una base nueva, refresca
@@ -189,7 +207,7 @@ if "itbms_initial" in ss:
                                  "Uselo despues de llenar lo que faltaba, antes de exportar.")
     if revisar:
         refreshed = edited.copy()
-        refreshed["falta"] = ["  ".join(missing_fields(r, decl)) or "OK" for r in records]
+        refreshed["falta"] = ["  ".join(missing_fields(r, selfrucs)) or "OK" for r in records]
         ss["itbms_initial"] = refreshed
         ss["itbms_ver"] = ss.get("itbms_ver", 0) + 1
         if pending == 0:
@@ -200,7 +218,7 @@ if "itbms_initial" in ss:
 
     pend_rows = []
     for rec in records:
-        miss = missing_fields(rec, decl)
+        miss = missing_fields(rec, selfrucs)
         if miss:
             pend_rows.append({
                 "fecha": rec.get("fecha", ""), "nombre": rec.get("nombre", ""),
@@ -266,6 +284,7 @@ if "itbms_initial" in ss:
                 st.info(w)
 
     if st.button("Empezar de nuevo (otro archivo)"):
-        for k in ("itbms_initial", "itbms_sig", "itbms_ver", "itbms_period", "itbms_decl", "itbms_warnings"):
+        for k in ("itbms_initial", "itbms_sig", "itbms_ver", "itbms_period", "itbms_decl",
+                  "itbms_selfrucs", "itbms_detected", "itbms_warnings"):
             ss.pop(k, None)
         st.rerun()
