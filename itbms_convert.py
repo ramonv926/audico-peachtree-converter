@@ -279,8 +279,128 @@ def write_informe43(lines, out_path: Path):
 
 
 # ───────────────────────────────────────────────────────── public entry
+def detect_periods(xlsx_path):
+    """Lee el Mayor y devuelve un Counter {YYYYMM: n_filas_de_compra} de los
+    meses presentes (solo filas que SÍ son compras del Informe 43). Permite al
+    front-end mostrar qué meses contiene el archivo antes de convertir."""
+    from collections import Counter
+    wb = load_workbook(xlsx_path, data_only=True)
+    ws = _gl_sheet(wb)
+    rows = list(ws.iter_rows(values_only=True))[1:]
+    wb.close()
+    months = Counter()
+    for r in rows:
+        _, _, dt, ref, jrnl, tdesc, debit, credit, _ = r
+        if tdesc in SUMMARY_ROWS or debit is None:
+            continue
+        if is_reten(ref, tdesc) or is_treasury(tdesc):
+            continue
+        ym = date_to_text(dt)[:6]
+        if ym:
+            months[ym] += 1
+    return months
+
+
+# ───────────────────────────────────────────────────────── editable-grid support
+EDITOR_FIELDS = ["estado", "fecha", "nombre", "factura", "tipo", "ruc", "dv",
+                 "concepto", "itbms", "monto"]
+
+
+# Campos OBLIGATORIOS del Informe 43 (Fecha/ITBMS/Monto vienen del Mayor)
+REQUIRED_LABELS = [
+    ("tipo", "Tipo"), ("ruc", "RUC/Cédula"), ("dv", "DV"),
+    ("nombre", "Nombre"), ("factura", "Factura"), ("concepto", "Concepto"),
+]
+
+
+def missing_fields(rec, declarant_ruc=None):
+    """Lista de campos obligatorios que faltan en una fila (vacía = fila OK)."""
+    miss = []
+    for key, label in REQUIRED_LABELS:
+        v = rec.get(key)
+        if v is None or str(v).strip() == "":
+            miss.append(label)
+    ruc = str(rec.get("ruc") or "").strip()
+    if ruc and declarant_ruc and ruc == declarant_ruc:
+        miss.append("RUC = declarante (corregir)")
+    return miss
+
+
+def _row_status(rec, declarant_ruc=None):
+    """Texto de estado para el grid editable."""
+    miss = missing_fields(rec, declarant_ruc)
+    return "OK" if not miss else "Falta: " + ", ".join(miss)
+
+
+def lines_to_editor_rows(lines, rate=DEFAULT_ITBMS_RATE, declarant_ruc=None):
+    """Aplana las líneas internas a filas planas para st.data_editor."""
+    rows = []
+    for ln in lines:
+        rec = {
+            "fecha": ln["fecha"], "nombre": ln["nombre"], "factura": str(ln["factura"]),
+            "tipo": ln["tipo"], "ruc": ln["ruc"], "dv": ln["dv"],
+            "concepto": int(ln["concepto"]), "itbms": float(ln["itbms"]),
+            "monto": round(float(ln["itbms"]) / rate, 2),
+        }
+        rec["estado"] = _row_status(rec, declarant_ruc)
+        rows.append(rec)
+    return rows
+
+
+def finalize_records(records, declarant_ruc=None, rate=DEFAULT_ITBMS_RATE):
+    """Toma las filas editadas (lista de dicts) y devuelve (lines, pending).
+    Normaliza dv, infiere tipo si falta, recalcula monto y marca bloqueadas."""
+    lines, pending = [], 0
+    for rec in records:
+        ruc = str(rec.get("ruc") or "").strip()
+        dv = str(rec.get("dv") or "").strip()
+        if dv and dv.isdigit():
+            dv = dv.zfill(2)
+        tipo = str(rec.get("tipo") or "").strip().upper()   # obligatorio: no se infiere en silencio
+        itbms = round(float(rec.get("itbms") or 0), 2)
+        ln = {
+            "tipo": tipo, "ruc": ruc, "dv": dv,
+            "nombre": str(rec.get("nombre") or "").strip(),
+            "factura": str(rec.get("factura") or "").strip(),
+            "fecha": str(rec.get("fecha") or "").strip(),
+            "concepto": int(rec.get("concepto") or 1), "compras_bs": 1,
+            "monto": round(itbms / rate, 2), "itbms": itbms,
+            "blocked": False, "reasons": [],
+        }
+        miss = missing_fields(rec, declarant_ruc)
+        if miss:
+            ln["blocked"] = True
+            ln["reasons"].append("Falta: " + ", ".join(miss))
+            pending += 1
+        lines.append(ln)
+    return lines, pending
+
+
+def vendor_master_delta(lines, config_path):
+    """Devuelve el dict de config con los proveedores NUEVOS ya completados
+    agregados al maestro (para que el usuario lo descargue y tú lo commitees).
+    No escribe a disco: en Streamlit Cloud el FS es efímero."""
+    with open(config_path, encoding="utf-8") as f:
+        cfg = json.load(f)
+    existing = {norm_name(v["nombre"]) for v in cfg.get("vendors", [])}
+    seen, added = set(existing), 0
+    for ln in lines:
+        if ln["blocked"] or not ln["ruc"]:
+            continue
+        key = norm_name(ln["nombre"])
+        if key in seen:
+            continue
+        cfg.setdefault("vendors", []).append({
+            "nombre": ln["nombre"], "ruc": ln["ruc"], "dv": ln["dv"],
+            "tipo": ln["tipo"], "concepto": int(ln["concepto"]),
+        })
+        seen.add(key); added += 1
+    cfg["vendors"] = sorted(cfg.get("vendors", []), key=lambda v: v["nombre"].upper())
+    return cfg, added
+
+
 def run_itbms_conversion(xlsx_path, config_path="config/itbms_vendors.json",
-                         out_dir="./out", period=None):
+                         out_dir="./out", period=None, filter_to_period=True):
     """Convierte el General Ledger crudo de Peachtree al Informe 43.
     Devuelve un dict de resultado estructurado (mismo estilo que convert.py)."""
     out_dir = Path(out_dir)
@@ -295,10 +415,19 @@ def run_itbms_conversion(xlsx_path, config_path="config/itbms_vendors.json",
 
     lines, stats = transform_rows(gl_rows, master, overrides, declarant_ruc, rate)
 
-    # período: del primer FECHA si no se especifica
+    # meses presentes en el archivo
+    from collections import Counter
+    months_present = Counter(ln["fecha"][:6] for ln in lines if ln["fecha"])
+
+    # período: el indicado, o el mes dominante del archivo
     if not period:
-        fechas = [ln["fecha"] for ln in lines if ln["fecha"]]
-        period = fechas[0][:6] if fechas else datetime.today().strftime("%Y%m")
+        period = months_present.most_common(1)[0][0] if months_present else datetime.today().strftime("%Y%m")
+
+    # filtrar a un solo mes (el Informe 43 es estrictamente mensual)
+    dropped = []
+    if filter_to_period and period:
+        dropped = [ln for ln in lines if ln["fecha"][:6] != period]
+        lines = [ln for ln in lines if ln["fecha"][:6] == period]
 
     decl = (declarant_ruc or "DECLARANTE")
     out_name = f"Informe43_{decl}_{period}.xlsx"
@@ -330,8 +459,16 @@ def run_itbms_conversion(xlsx_path, config_path="config/itbms_vendors.json",
     if blocked:
         warnings.append(f"{len(blocked)} filas quedaron BLOQUEADAS — revisa la pestaña 'Revisión manual' "
                         "y completa el proveedor en config/itbms_vendors.json.")
+    if dropped:
+        otros = ", ".join(f"{m} ({n})" for m, n in Counter(d["fecha"][:6] for d in dropped).items())
+        warnings.append(f"Se excluyeron {len(dropped)} filas de OTROS meses (no van en el informe de "
+                        f"{period}): {otros}. Verifica que exportaste el rango correcto en Peachtree.")
+    if not lines:
+        warnings.append(f"⚠️ NINGUNA fila de compra en {period}. ¿Exportaste el mes correcto del Mayor?")
 
     return {
+        "editor_rows": lines_to_editor_rows(lines, rate, declarant_ruc),
+        "declarant_ruc": declarant_ruc,
         "rows_written": len(resolved),
         "rows_blocked": len(blocked),
         "summary_rows": summary_rows,
