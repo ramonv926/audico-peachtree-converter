@@ -130,6 +130,7 @@ if st.button("Generar Informe 43", type="primary", use_container_width=True):
                     for r in _df.to_dict("records")]
     ss["itbms_sig"] = f"{gl_file.name}:{period}"
     ss["itbms_initial"] = _df
+    ss["itbms_ver"] = 0
     ss["itbms_period"] = result["period"]
     ss["itbms_decl"] = _decl
     ss["itbms_warnings"] = result["warnings"]
@@ -150,14 +151,14 @@ if "itbms_initial" in ss:
 
     edited = st.data_editor(
         initial,
-        key=f"editor_{ss['itbms_sig']}",
+        key=f"editor_{ss['itbms_sig']}_{ss.get('itbms_ver', 0)}",
         use_container_width=True,
         num_rows="fixed",
         height=460,
         column_order=["falta", "fecha", "nombre", "factura", "tipo", "ruc", "dv", "concepto", "monto", "itbms"],
         column_config={
             "falta": st.column_config.TextColumn("\u26a0\ufe0f Falta", disabled=True, width="medium",
-                                                 help="Campos vacios en esta fila. 'OK' = fila completa."),
+                                                 help="Campos vacios en esta fila al momento de 'Revisar'. 'OK' = fila completa."),
             "fecha": st.column_config.TextColumn("Fecha", disabled=True, width="small"),
             "nombre": st.column_config.TextColumn("Nombre / Razon social", width="large", required=True),
             "factura": st.column_config.TextColumn("Factura", width="small", required=True),
@@ -172,13 +173,30 @@ if "itbms_initial" in ss:
     )
 
     # ---- validacion EN VIVO sobre lo editado (siempre actual) ----
+    # NO se reasigna ss["itbms_initial"] aqui: cambiar el DataFrame que alimenta al
+    # data_editor en cada rerun borra la edicion en curso. La columna "Falta" del
+    # grid se refresca solo al presionar "Revisar grilla" (abajo).
     records = edited.to_dict("records")
-    # refrescar la columna "Falta" (deshabilitada) sin tocar lo que el usuario edito
-    ss["itbms_initial"] = ss["itbms_initial"].assign(
-        falta=["  ".join(missing_fields(r, decl)) or "OK" for r in records]
-    )
     lines, pending = finalize_records(records, declarant_ruc=decl)
     total_itbms = round(sum(l["itbms"] for l in lines), 2)
+
+    # boton para forzar re-validacion: hornea lo editado en una base nueva, refresca
+    # la columna "Falta" y sube la version de la grilla (llave nueva = sin estado viejo)
+    rev_col, _ = st.columns([1, 3])
+    with rev_col:
+        revisar = st.button("\U0001F504 Revisar grilla", use_container_width=True,
+                            help="Vuelve a revisar TODAS las filas y actualiza 'Falta' y 'Por completar'. "
+                                 "Uselo despues de llenar lo que faltaba, antes de exportar.")
+    if revisar:
+        refreshed = edited.copy()
+        refreshed["falta"] = ["  ".join(missing_fields(r, decl)) or "OK" for r in records]
+        ss["itbms_initial"] = refreshed
+        ss["itbms_ver"] = ss.get("itbms_ver", 0) + 1
+        if pending == 0:
+            st.toast("\u2705 Grilla completa: puedes exportar.", icon="\u2705")
+        else:
+            st.toast(f"Aun faltan {pending} fila(s) por completar.", icon="\u26a0\ufe0f")
+        st.rerun()
 
     pend_rows = []
     for rec in records:
@@ -248,6 +266,6 @@ if "itbms_initial" in ss:
                 st.info(w)
 
     if st.button("Empezar de nuevo (otro archivo)"):
-        for k in ("itbms_initial", "itbms_sig", "itbms_period", "itbms_decl", "itbms_warnings"):
+        for k in ("itbms_initial", "itbms_sig", "itbms_ver", "itbms_period", "itbms_decl", "itbms_warnings"):
             ss.pop(k, None)
         st.rerun()
