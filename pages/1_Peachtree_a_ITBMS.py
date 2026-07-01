@@ -128,6 +128,7 @@ if st.button("Generar Informe 43", type="primary", use_container_width=True):
     _self = result["self_rucs"]
     _df["falta"] = ["  ".join(missing_fields(r, _self)) or "OK"
                     for r in _df.to_dict("records")]
+    _df["quitar"] = False
     ss["itbms_sig"] = f"{gl_file.name}:{period}"
     ss["itbms_initial"] = _df
     ss["itbms_ver"] = 0
@@ -173,8 +174,10 @@ if "itbms_initial" in ss:
         use_container_width=True,
         num_rows="fixed",
         height=460,
-        column_order=["falta", "fecha", "nombre", "factura", "tipo", "ruc", "dv", "concepto", "monto", "itbms"],
+        column_order=["quitar", "falta", "fecha", "nombre", "factura", "tipo", "ruc", "dv", "concepto", "monto", "itbms"],
         column_config={
+            "quitar": st.column_config.CheckboxColumn("Quitar", width="small", default=False,
+                                                      help="Marca y presiona 'Revisar grilla' para EXCLUIR esta fila del informe."),
             "falta": st.column_config.TextColumn("\u26a0\ufe0f Falta", disabled=True, width="medium",
                                                  help="Campos vacios en esta fila al momento de 'Revisar'. 'OK' = fila completa."),
             "fecha": st.column_config.TextColumn("Fecha", disabled=True, width="small"),
@@ -190,34 +193,67 @@ if "itbms_initial" in ss:
         },
     )
 
-    # ---- validacion EN VIVO sobre lo editado (siempre actual) ----
-    # NO se reasigna ss["itbms_initial"] aqui: cambiar el DataFrame que alimenta al
-    # data_editor en cada rerun borra la edicion en curso. La columna "Falta" del
-    # grid se refresca solo al presionar "Revisar grilla" (abajo).
+    # ---- estado EN VIVO sobre lo editado (siempre actual) ----
+    # NO se reasigna ss["itbms_initial"] aqui (eso borraria la edicion en curso).
+    # 'Falta' y las filas quitadas se refrescan al presionar 'Revisar grilla'.
     records = edited.to_dict("records")
-    lines, pending = finalize_records(records, declarant_rucs=selfrucs)
-    total_itbms = round(sum(l["itbms"] for l in lines), 2)
+    kept = [r for r in records if not r.get("quitar")]
+    removed = [r for r in records if r.get("quitar")]
+    lines, pending = finalize_records(kept, declarant_rucs=selfrucs)
+    grid_itbms = round(sum(l["itbms"] for l in lines), 2)
+    mayor_itbms = round(sum(float(r.get("itbms") or 0) for r in records), 2)
+    removed_itbms = round(sum(float(r.get("itbms") or 0) for r in removed), 2)
 
-    # boton para forzar re-validacion: hornea lo editado en una base nueva, refresca
-    # la columna "Falta" y sube la version de la grilla (llave nueva = sin estado viejo)
+    QUITADA = "\U0001F6AB QUITADA - no va en el Informe"
+
+    def _refresh_base(df, recs):
+        out = df.copy()
+        out["falta"] = [QUITADA if r.get("quitar") else ("  ".join(missing_fields(r, selfrucs)) or "OK")
+                        for r in recs]
+        return out
+
+    # ---- acciones: Revisar grilla  +  Buscar proveedor ----
     rev_col, _ = st.columns([1, 3])
     with rev_col:
         revisar = st.button("\U0001F504 Revisar grilla", use_container_width=True,
-                            help="Vuelve a revisar TODAS las filas y actualiza 'Falta' y 'Por completar'. "
-                                 "Uselo despues de llenar lo que faltaba, antes de exportar.")
+                            help="Revisa TODAS las filas, aplica las que marcaste 'Quitar' y actualiza los totales.")
     if revisar:
-        refreshed = edited.copy()
-        refreshed["falta"] = ["  ".join(missing_fields(r, selfrucs)) or "OK" for r in records]
-        ss["itbms_initial"] = refreshed
+        ss["itbms_initial"] = _refresh_base(edited, records)
         ss["itbms_ver"] = ss.get("itbms_ver", 0) + 1
-        if pending == 0:
-            st.toast("\u2705 Grilla completa: puedes exportar.", icon="\u2705")
-        else:
-            st.toast(f"Aun faltan {pending} fila(s) por completar.", icon="\u26a0\ufe0f")
+        st.toast("\u2705 Grilla lista." if pending == 0 else f"Aun faltan {pending} fila(s).",
+                 icon="\u2705" if pending == 0 else "\u26a0\ufe0f")
         st.rerun()
 
+    with st.expander("\U0001F50E Buscar proveedor en el maestro (autocompleta Nombre / RUC / DV / Tipo)"):
+        try:
+            _cfg = json.load(open(CONFIG_PATH, encoding="utf-8"))
+            maestro = [{"nombre": v["nombre"], "ruc": v["ruc"], "dv": v.get("dv", ""), "tipo": v.get("tipo", "")}
+                       for v in _cfg.get("vendors", [])]
+        except Exception:
+            maestro = []
+        st.caption("Puedes seguir escribiendo a mano en la grilla; esto es un atajo para no teclear el RUC/DV.")
+        row_opts = list(range(len(records)))
+        def _rowlabel(i):
+            r = records[i]
+            mark = "  \u26a0\ufe0f" if missing_fields(r, selfrucs) else ""
+            return f"fila {i+1} - {(str(r.get('nombre')) or '(sin nombre)')[:34]} - ${float(r.get('itbms') or 0):.2f}{mark}"
+        tgt = st.selectbox("1) Fila a completar", row_opts, format_func=_rowlabel, key="buscar_row")
+        vlabels = [f'{v["nombre"]}  -  {v["ruc"]} (DV {v["dv"]})' for v in maestro]
+        vsel = st.selectbox("2) Proveedor del maestro (escribe para buscar)", list(range(len(maestro))),
+                            format_func=lambda i: vlabels[i], index=None,
+                            placeholder="Escribe parte del nombre...", key="buscar_vendor")
+        if st.button("Aplicar proveedor a la fila", disabled=(vsel is None or not maestro)):
+            v = maestro[vsel]
+            recs = edited.to_dict("records")
+            recs[tgt].update(nombre=v["nombre"], ruc=v["ruc"], dv=v["dv"], tipo=v["tipo"])
+            newdf = pd.DataFrame(recs)[list(edited.columns)]
+            ss["itbms_initial"] = _refresh_base(newdf, recs)
+            ss["itbms_ver"] = ss.get("itbms_ver", 0) + 1
+            st.toast(f'Aplicado a la fila {tgt+1}: {v["nombre"]}', icon="\u2705")
+            st.rerun()
+
     pend_rows = []
-    for rec in records:
+    for rec in kept:
         miss = missing_fields(rec, selfrucs)
         if miss:
             pend_rows.append({
@@ -227,15 +263,21 @@ if "itbms_initial" in ss:
             })
 
     c1, c2, c3 = st.columns(3)
-    c1.metric("Filas totales", len(lines))
+    c1.metric("Filas en el informe", len(lines))
     c2.metric("Por completar", pending,
               delta=None if pending == 0 else f"{pending} pendientes", delta_color="inverse")
-    c3.metric("ITBMS total", f"${total_itbms:,.2f}")
+    c3.metric("ITBMS del informe", f"${grid_itbms:,.2f}")
+
+    if removed:
+        st.info(f"Se quitaron **{len(removed)} fila(s)** (B/. {removed_itbms:,.2f}). "
+                f"ITBMS del informe: **B/. {grid_itbms:,.2f}**  |  Total del Mayor: B/. {mayor_itbms:,.2f}.")
 
     # ---- semaforo de exportacion ----
-    ready = (pending == 0)
+    ready = (pending == 0 and len(lines) > 0)
     if ready:
         st.success("\u2705 La grilla esta COMPLETA. Lista para exportar el Informe 43.")
+    elif len(lines) == 0:
+        st.error("\u26d4 No queda ninguna fila en el informe (quitaste todas). Nada que exportar.")
     else:
         st.error(f"\u26d4 Faltan campos en **{pending} fila(s)**. Completa todo antes de exportar. "
                  "Abajo se listan exactamente que campos faltan en cada fila.")
@@ -285,6 +327,6 @@ if "itbms_initial" in ss:
 
     if st.button("Empezar de nuevo (otro archivo)"):
         for k in ("itbms_initial", "itbms_sig", "itbms_ver", "itbms_period", "itbms_decl",
-                  "itbms_selfrucs", "itbms_detected", "itbms_warnings"):
+                  "itbms_selfrucs", "itbms_detected", "itbms_warnings", "buscar_row", "buscar_vendor"):
             ss.pop(k, None)
         st.rerun()
