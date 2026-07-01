@@ -23,23 +23,527 @@
   },
   "vendors": [
     {
-      "nombre": "ASSETS TRUST & CORPORATE",
+      "nombre": "AARON ANDERSON",
+      "ruc": "1-732-214",
+      "dv": "71",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "AARON BATISTA",
+      "ruc": "8-929-1681",
+      "dv": "42",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ABILITY LATAM",
+      "ruc": "155704359-2-2021",
+      "dv": "54",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ACARREO PICK UPTY",
+      "ruc": "8-NT-2-108292",
+      "dv": "84",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "ACCESS INTERPRETERS INC",
+      "ruc": "1744097-1-694955",
+      "dv": "24",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ACE HARDWARE INTERNATIONAL S A",
+      "ruc": "15430-249-148718",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ACE INTERNATIONAL HARDWARE",
+      "ruc": "15430-249-148718",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ACRIGRABADOS S A",
+      "ruc": "2266017-1-784276",
+      "dv": "99",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ADALIGITZA ANDERSON DE CHAVEZ",
+      "ruc": "010-5-52",
+      "dv": "69",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ADMINISTRADORA AVC SA",
+      "ruc": "155725977-2-2022",
+      "dv": "28",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ADNERY J ROJAS CARRION",
+      "ruc": "8-365-532",
+      "dv": "06",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ADRIAN HENRIQUEZ",
+      "ruc": "8-889-2106",
+      "dv": "53",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ADRIEL CORDOBA",
+      "ruc": "8-776-1684",
+      "dv": "86",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "AE ENTERPRISE S A",
+      "ruc": "1544889-1-656389",
+      "dv": "00",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AEXPRESS",
+      "ruc": "155722797-2-2022",
+      "dv": "58",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AEXPRESS CARGO S A",
+      "ruc": "155722797-2-2022",
+      "dv": "58",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AGUAS CRISTALINAS",
+      "ruc": "18219-85-169844",
+      "dv": "29",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AIR FACILITY",
+      "ruc": "64339-82-357625",
+      "dv": "21",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AIR PANAMA REGIONAL",
+      "ruc": "706870-1-470149",
+      "dv": "48",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ALAMACEN FERRETERIA",
+      "ruc": "8-854-38",
+      "dv": "02",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ALDO ELVIS LASSO",
+      "ruc": "8-868-1382",
+      "dv": "98",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ALEJANDRO CARRASCO",
+      "ruc": "8-259-966",
+      "dv": "04",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ALEJANDRO CURIEL",
+      "ruc": "8-NT-2-108292",
+      "dv": "84",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "ALEVANON S A",
+      "ruc": "2528357-1-822807",
+      "dv": "98",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ALEXANDER LOMA",
+      "ruc": "PAS.110686785",
+      "dv": "00",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "ALEXIS MONTEZA",
+      "ruc": "8-812-1512",
+      "dv": "56",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "Alexis Nunez",
+      "ruc": "9-753-1463",
+      "dv": "57",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ALISOF S A",
+      "ruc": "155629758-2-2016",
+      "dv": "70",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ALISOFT S A",
+      "ruc": "155629758-2-2016",
+      "dv": "70",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ALL COMPUTER S A",
+      "ruc": "19181-12-175246",
+      "dv": "04",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AMET MUNOZ",
+      "ruc": "8-504-376",
+      "dv": "24",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "AMITEX S A",
+      "ruc": "433794-1-429167",
+      "dv": "89",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANA MARIA FERNANDES BRAVO",
+      "ruc": "8-236-1687",
+      "dv": "27",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANA RAMONA CASTILLO",
+      "ruc": "4-139-727",
+      "dv": "24",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANDRE ELOY RIVERA",
+      "ruc": "PE-12-1363",
+      "dv": "47",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANDRES ELOY RIVERA",
+      "ruc": "PE-12-1363",
+      "dv": "47",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANEL RODRIGUEZ",
+      "ruc": "9-700-1279",
+      "dv": "40",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANGHY CALDERON",
+      "ruc": "8-897-084",
+      "dv": "51",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANIBAL ARIANO",
+      "ruc": "3-96-399",
+      "dv": "92",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANJANA LACHMAN PUNJABI",
+      "ruc": "8-770-1703",
+      "dv": "60",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANOTNIA PORTO ALEGRE",
+      "ruc": "E-8-54-123",
+      "dv": "08",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANOTNIO MENDOZA",
+      "ruc": "9-751-2475",
+      "dv": "73",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANTILLANA INDUSTRIAL Y COMERCIAL SA",
+      "ruc": "558357-1-444639",
+      "dv": "94",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANTIPLAGAS S A",
+      "ruc": "1800437-1-705203",
+      "dv": "03",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANTONIA PORTO ALEGRE",
+      "ruc": "E-8-54-123",
+      "dv": "08",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANTONIO MENDOZA",
+      "ruc": "9-751-2475",
+      "dv": "73",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ANYVONNE POVEDA",
+      "ruc": "8-375-552",
+      "dv": "78",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "AR SOLUCIONES GRAFICAS",
+      "ruc": "8-815-2023",
+      "dv": "55",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ARMANDO RODRIGUEZ",
+      "ruc": "8-877-1210",
+      "dv": "41",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "AROLD MONTENEGRO",
+      "ruc": "8-943-1989",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ARRENDADORA ECONOMICA",
+      "ruc": "63491-67-355132",
+      "dv": "00",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ARRENDAMIENTOS DE AUTOS ECONOMICOS EN PANAMA S A",
+      "ruc": "155675048-2-2019",
+      "dv": "47",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ARTISANA FOOD",
+      "ruc": "155585363-2-2014",
+      "dv": "79",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ARTURO ARAUZ TOCUMEN SA",
+      "ruc": "37489-2-267627",
+      "dv": "36",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ASICURAZONI GENERALLI",
+      "ruc": "756-374-135990",
+      "dv": "70",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ASSA CIA DE SEGUROS S A",
+      "ruc": "3724-103-53659",
+      "dv": "43",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ASSETS TRUST & CORPORATE SERVICES INC",
+      "ruc": "4646-145-61090",
+      "dv": "54",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ASSETS TRUST & CORPORATE SERVICES INC FID 135",
       "ruc": "2480734-1-3185",
       "dv": "63",
       "tipo": "J",
       "concepto": 1
     },
     {
-      "nombre": "AUDIOMIX DORADO, S.A.",
+      "nombre": "ASSETS TRUST AND CORPORATE",
+      "ruc": "2480734-1-3185",
+      "dv": "63",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ASSICURAZIONI GENERALI SPA",
+      "ruc": "756-374-135990",
+      "dv": "70",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ASTURCOM SERVICIOS S A",
+      "ruc": "155621356-2-2016",
+      "dv": "91",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUDIO CONCEPT",
+      "ruc": "1440342-1-635785",
+      "dv": "67",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUDIO MIX S A",
+      "ruc": "518090-1-438162",
+      "dv": "43",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUDIOFOTO",
+      "ruc": "1120311-1-564223",
+      "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUDIOMIX DORADO SA",
       "ruc": "155700081-2-2020",
       "dv": "10",
       "tipo": "J",
       "concepto": 1
     },
     {
-      "nombre": "AUTO CENTRO, S.A.",
+      "nombre": "AUDIOMIX S A",
+      "ruc": "155594106-2-2015",
+      "dv": "81",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUDIOVISUALES A R S A",
+      "ruc": "9-700-1279",
+      "dv": "40",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUDIOVISUALES AR",
+      "ruc": "9-700-1279",
+      "dv": "40",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUDIOVISUALES DEL ISTMO SA",
+      "ruc": "133931-1-383243",
+      "dv": "29",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUTO CENTRO S A",
       "ruc": "603-203-124985",
       "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUTO LLANTAS S A",
+      "ruc": "155632111-2-2016",
+      "dv": "80",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AUTOCENTRO S A",
+      "ruc": "603-203-124985",
+      "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AVENTURAS 2000",
+      "ruc": "65798-50-362402",
+      "dv": "27",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "AYIN BARIIOS DE SUCRE",
+      "ruc": "3-48-397",
+      "dv": "60",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "BAHIA MOTORS S A",
+      "ruc": "51013-40-319894",
+      "dv": "07",
       "tipo": "J",
       "concepto": 1
     },
@@ -48,14 +552,448 @@
       "ruc": "280-134-61098",
       "dv": "02",
       "tipo": "J",
-      "concepto": 5
+      "concepto": 1
     },
     {
-      "nombre": "CABLE AND WIRELESS PANAMA",
+      "nombre": "BANDAS Y MUELLES S A",
+      "ruc": "257348-1-404076",
+      "dv": "87",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "BARCENAS INTERNATIONAL INC",
+      "ruc": "155607822-2-2015",
+      "dv": "36",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "BELGICA PEREZ",
+      "ruc": "6-50-2610",
+      "dv": "17",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "blue mango",
+      "ruc": "8-413-665",
+      "dv": "33",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "BLUE POWER",
+      "ruc": "1880043-1-718916",
+      "dv": "45",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "BOLIVAR RODRIGUEZ",
+      "ruc": "8-762-634",
+      "dv": "95",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "BOTICA EL JAVILLO",
+      "ruc": "270-35-61112",
+      "dv": "23",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "BRANDON BASILE",
+      "ruc": "8-705-282",
+      "dv": "80",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "BREDIO HARRIS ACOSTA",
+      "ruc": "8-749-115",
+      "dv": "04",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "BRYAN JOEL MEDINA ROJAS",
+      "ruc": "C02784340",
+      "dv": "00",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "BUILDING GLASS CORP.",
+      "ruc": "155683565-2-2019",
+      "dv": "26",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CABLE AND WIRELESS PANAMA S A",
       "ruc": "46004-187-302083",
       "dv": "96",
       "tipo": "J",
-      "concepto": 2
+      "concepto": 1
+    },
+    {
+      "nombre": "CABLE AND WIRELESS SA",
+      "ruc": "46004-187-302083",
+      "dv": "96",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CABLE ONDA S A",
+      "ruc": "30394-2-238626",
+      "dv": "22",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "caja de seguro social",
+      "ruc": "8-NT-1-12542",
+      "dv": "21",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CAMPOS CONSULTING INC",
+      "ruc": "155695809-2-2020",
+      "dv": "39",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CAMSCO PANAMA SA",
+      "ruc": "1749618-1-696097",
+      "dv": "03",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CARIBBEAN FRANCHISE DEVELPMENT CORP",
+      "ruc": "39889-23-277344",
+      "dv": "21",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "carlos fidel alvarado",
+      "ruc": "8-853-1440",
+      "dv": "98",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "CARLOS SHAUKONG QIU YAU",
+      "ruc": "8-1012-1706",
+      "dv": "85",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "CASA EGEO",
+      "ruc": "466-489-101996",
+      "dv": "12",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CD AUTO LLANTAS PANAMA",
+      "ruc": "155632111-2-2016",
+      "dv": "80",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CENTRO MEDICO EL SOL",
+      "ruc": "470754-1-434232",
+      "dv": "90",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CESAR PIZZA S A",
+      "ruc": "1725567-1-691286",
+      "dv": "92",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CESAR SAAVEDRA",
+      "ruc": "2-161-230",
+      "dv": "11",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "CHANDINI PUNJABI",
+      "ruc": "3-725-2304",
+      "dv": "30",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "CHARLES MEYER",
+      "ruc": "8-462-318",
+      "dv": "25",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "CHAYTEC S A",
+      "ruc": "2298584-1-789516",
+      "dv": "76",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CIA BTESH S A",
+      "ruc": "203-99-49005",
+      "dv": "68",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CIA GOLY, SA",
+      "ruc": "652-212-129962",
+      "dv": "35",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CIA HOTELERA ALBROOK MALL",
+      "ruc": "1644441-1-674388",
+      "dv": "05",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CITY PARKING PANAMA S A",
+      "ruc": "934082-1-522297",
+      "dv": "39",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CIY PARKING PANAMA S A",
+      "ruc": "934082-1-522297",
+      "dv": "39",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CLASS CONCEPT MARKETING HOLDING",
+      "ruc": "1985677-1-737825",
+      "dv": "10",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CLAUDIA VELARDE",
+      "ruc": "8-824-2036",
+      "dv": "60",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "COCHEZ Y CIA",
+      "ruc": "521-136-113133",
+      "dv": "02",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "COFFE ROASTER UNIDOS S A",
+      "ruc": "2453585-1-812598",
+      "dv": "00",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "COLLINS RADA GROUP INC",
+      "ruc": "155605504-2-2015",
+      "dv": "03",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "COMPA?IA DE MOTORES",
+      "ruc": "866-176-101773",
+      "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "COMPA?IA GOLY S A",
+      "ruc": "652-212-129962",
+      "dv": "35",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "COMPANIA DE TEJIDOS",
+      "ruc": "151758-1-386069",
+      "dv": "33",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "COMPANIA GOLY S A",
+      "ruc": "652-212-129962",
+      "dv": "35",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CONSULTORES CORPORATIVOS IBEROAMERICA",
+      "ruc": "2143155-1-36431",
+      "dv": "14",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "COPA AIRLINES",
+      "ruc": "130-377-34706",
+      "dv": "02",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CORPORACION MANOLO",
+      "ruc": "741609-1-477946",
+      "dv": "93",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CORTES MANAGEMENT S A",
+      "ruc": "1069588-1-551769",
+      "dv": "05",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "CRECENCIO JAEN",
+      "ruc": "8-344-61",
+      "dv": "20",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "CRISTHIAN HERNANDEZ",
+      "ruc": "8-786-2453",
+      "dv": "34",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "CRIZEL OVALLES",
+      "ruc": "2-736-2402",
+      "dv": "02",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "CYV ENTERPRISES S A",
+      "ruc": "155713899-2-2022",
+      "dv": "19",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DALYS MIREYA DEAGO VEGA",
+      "ruc": "6-70-8",
+      "dv": "61",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "DANA FARMACEUTICA INC",
+      "ruc": "155626960-2-2016",
+      "dv": "87",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DANIEL CAVADIA",
+      "ruc": "E-8-181264",
+      "dv": "40",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "DANIEL GREEN",
+      "ruc": "10-708-2099",
+      "dv": "77",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "DANILO CASTILLERO",
+      "ruc": "8-800-2275",
+      "dv": "06",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "DANNYS VERGARA",
+      "ruc": "8-720-1978",
+      "dv": "71",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "DAVID CABAL",
+      "ruc": "8-809-508",
+      "dv": "48",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "DAVID CHERY",
+      "ruc": "8-949-2481",
+      "dv": "23",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "DAVID FABBRONI",
+      "ruc": "8-927-258",
+      "dv": "18",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "DAVIN ARROCHA",
+      "ruc": "2-728-1617",
+      "dv": "05",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "DAVISIN ARROCHA",
+      "ruc": "2-728-1617",
+      "dv": "05",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "DELI GOURMET S A",
+      "ruc": "105765-1-379278",
+      "dv": "60",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DELI GREEK S A",
+      "ruc": "155601514-2-2015",
+      "dv": "33",
+      "tipo": "J",
+      "concepto": 1
     },
     {
       "nombre": "DELIVERY HERO PANAMA (E. COMMERCE)S.A.",
@@ -65,23 +1003,884 @@
       "concepto": 1
     },
     {
-      "nombre": "DELIVERY HERO PANAMA(E-COMMERCE)S.A.",
-      "ruc": "2679372-1-844914",
-      "dv": "73",
+      "nombre": "DESARROLLO INMOBILIARIO DEL ESTE",
+      "ruc": "273003-1-406331",
+      "dv": "38",
       "tipo": "J",
       "concepto": 1
     },
     {
-      "nombre": "ELECTRONICA ATLANTICO",
+      "nombre": "DHL PANAMA S A",
+      "ruc": "5458-162-67519",
+      "dv": "07",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DIGICEL PANAMA S A",
+      "ruc": "985987-1-533212",
+      "dv": "95",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DIGITAL PHOTO SUPPLY SA",
+      "ruc": "1299325-1-605134",
+      "dv": "69",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "digital systems",
+      "ruc": "657163-1-460638",
+      "dv": "37",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DIM SUM SA",
+      "ruc": "155644443-2-2017",
+      "dv": "99",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DISCOVERY CENTER",
+      "ruc": "30773-73-240340",
+      "dv": "08",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DISTRIBUIDORA DE EMPAQUE",
+      "ruc": "106787-1-379451",
+      "dv": "80",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DISTRIBUIDORA DE EMPAQUES S A",
+      "ruc": "106787-1-379451",
+      "dv": "80",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DISTRIBUIDORA DRIKHA",
+      "ruc": "155663036-2-2018",
+      "dv": "16",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DISTRIBUIDORA MUSICAL",
+      "ruc": "865-524-103137",
+      "dv": "55",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DISTRIBUIDORA XTRA S A",
+      "ruc": "28726-153-232616",
+      "dv": "06",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DO IT CENTER",
+      "ruc": "15430-249-148718",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DOIT CENTER",
+      "ruc": "15430-249-148718",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DOMINGO ALONSO CAM, S.A.",
+      "ruc": "697-413-117271",
+      "dv": "33",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DULCERIA MOMI",
+      "ruc": "808-349-126446",
+      "dv": "00",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DULCES MOMI S A",
+      "ruc": "808-349-126446",
+      "dv": "00",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DURALLANTA S A",
+      "ruc": "33182-56-250806",
+      "dv": "21",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "DURALLANTAS S A",
+      "ruc": "33182-56-250806",
+      "dv": "21",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "E INTEGRACION",
+      "ruc": "8-438-469",
+      "dv": "71",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "E VISION",
+      "ruc": "1347823-1-616558",
+      "dv": "15",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ECO DIGITAL, S.A.",
+      "ruc": "1404747-1-628681",
+      "dv": "70",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ECONOMIC CAR RENTAL S A",
+      "ruc": "155720944-2-2022",
+      "dv": "91",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDEMET - EDECHI -",
+      "ruc": "57983-2-340436",
+      "dv": "10",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDEMET EDECHI",
+      "ruc": "57983-110-340442",
+      "dv": "31",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDGAR CARRASCO",
+      "ruc": "8-213-2650",
+      "dv": "20",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDGAR DIAZ",
+      "ruc": "8-481-92",
+      "dv": "43",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDGAR ESCOBAR",
+      "ruc": "8-825-2076",
+      "dv": "93",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDGARDO FERNANDEZ",
+      "ruc": "8-860-951",
+      "dv": "20",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDILBERTO CONTRERAS",
+      "ruc": "4-717-647",
+      "dv": "95",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDITH RIVAS",
+      "ruc": "8-906-21",
+      "dv": "02",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDUARDO MEDRANO",
+      "ruc": "8-871-1708",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDUARDO PRADO",
+      "ruc": "8-812-701",
+      "dv": "75",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDUARDO VASQUEZ",
+      "ruc": "8-827-699",
+      "dv": "20",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EDWIN ABREGO",
+      "ruc": "8-927-347",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EIMMY CHEN WU",
+      "ruc": "8-938-1096",
+      "dv": "33",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EL MACHETAZO SA",
+      "ruc": "572-395-119290",
+      "dv": "30",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EL RASTRO DE ALEJANDRIA S A",
+      "ruc": "629489-1-456185",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EL RASTRO DE ALESSANDRIA",
+      "ruc": "629489-1-456185",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELECTRICIDAD CASTELLANO",
+      "ruc": "12150-178-121154",
+      "dv": "50",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELECTRICIDAD CASTELLANOS S A",
+      "ruc": "12150-178-121154",
+      "dv": "50",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELECTRISA",
+      "ruc": "12150-178-121154",
+      "dv": "50",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELECTRONICA ATLANTICO S A",
       "ruc": "378345-1-421317",
       "dv": "98",
       "tipo": "J",
       "concepto": 1
     },
     {
-      "nombre": "GEO F. NOVEY, INC",
+      "nombre": "ELECTRONICA JAPONESA",
+      "ruc": "63444-11-354998",
+      "dv": "97",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELEMENTOS INDUSTRIALES S A",
+      "ruc": "2885-2-45956",
+      "dv": "75",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELEUCADIO MENDEZ",
+      "ruc": "9-206-858",
+      "dv": "75",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELIAS SALINAS CHECA",
+      "ruc": "8-300-435",
+      "dv": "32",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELIAS SANTANA",
+      "ruc": "8-423-235",
+      "dv": "93",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELIECER ALVARADO",
+      "ruc": "8-802-128",
+      "dv": "82",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELIEZER CUMBRERA",
+      "ruc": "8-401-124",
+      "dv": "44",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELIGIO MACILLA POLANCO",
+      "ruc": "8-879-1009",
+      "dv": "53",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELIGIO MANCILLA",
+      "ruc": "8-879-1009",
+      "dv": "53",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELISA RUIZ",
+      "ruc": "9-725-360",
+      "dv": "80",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELMEC",
+      "ruc": "8091-204-85890",
+      "dv": "39",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELVIS MORENO",
+      "ruc": "9-100-577",
+      "dv": "00",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "EMPRESA DE DISTRIB ELECTRICA",
+      "ruc": "57983-2-340436",
+      "dv": "10",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EMPRESA DE DISTRIBUCION ELECTRICA",
+      "ruc": "57983-110-340442",
+      "dv": "31",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EMPRESA DE DISTRIBUICION ELECTRICA METRO OESTE S A",
+      "ruc": "57983-2-340436",
+      "dv": "10",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EMPRESA NACIONAL DE AUTOPISTA S A",
+      "ruc": "1903738-1-723197",
+      "dv": "50",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EMPRESAS CARBONE SA",
+      "ruc": "1080323-1-554308",
+      "dv": "39",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ENA ASSETS S A",
+      "ruc": "2162734-1-767262",
+      "dv": "64",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ENA NORTE S A",
+      "ruc": "2162734-1-767262",
+      "dv": "64",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ENA PANAPASS",
+      "ruc": "2162734-1-767262",
+      "dv": "64",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ENA PANAPASS - RECARGA",
+      "ruc": "2162734-1-767262",
+      "dv": "64",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ENA SUR",
+      "ruc": "45408-55-299957",
+      "dv": "65",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ENTRE PUNTOS S A",
+      "ruc": "155655171-2-2017",
+      "dv": "52",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ERBELKA",
+      "ruc": "6-50-2610",
+      "dv": "17",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ERIC JAVIER BATISTA",
+      "ruc": "8-707-2401",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ERIC MARIN",
+      "ruc": "8-824-855",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ERIC SANTAMARIA",
+      "ruc": "8-836-1852",
+      "dv": "36",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ERICH BLANCO",
+      "ruc": "8-NT-2-33898",
+      "dv": "11",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ERICK ISLER",
+      "ruc": "PAS.085652192",
+      "dv": "00",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "esso standard oil",
+      "ruc": "142-96-36620",
+      "dv": "79",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "estacion el dorado",
+      "ruc": "35911-53-261633",
+      "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "estacion omega",
+      "ruc": "956054-1-526865",
+      "dv": "22",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ESTACION OSARAM S A",
+      "ruc": "1069588-1-551769",
+      "dv": "05",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "estacion punta pacifica",
+      "ruc": "594524-1-450642",
+      "dv": "04",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "estacion san fernando",
+      "ruc": "30822-23-240598",
+      "dv": "87",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ESTACION TEXACO",
+      "ruc": "1069588-1-551769",
+      "dv": "05",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ESTRUCTURAS GRAFICAS CORP",
+      "ruc": "2355661-1-798564",
+      "dv": "36",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EUFONIA S A",
+      "ruc": "155634347-2-2016",
+      "dv": "42",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "EVOLUTIONS TOWER CORP",
+      "ruc": "1096259-1-558481",
+      "dv": "85",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FARMACIA EL CARMEN",
+      "ruc": "8-838-1385",
+      "dv": "51",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "FARMACIAS ARROCHA",
+      "ruc": "346-266-76470",
+      "dv": "13",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FARMACIAS ARROCHAS",
+      "ruc": "346-266-76470",
+      "dv": "13",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FAUSTO SALAZAR",
+      "ruc": "257-563-58968",
+      "dv": "94",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "fedex",
+      "ruc": "49679-106-746",
+      "dv": "49",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "felipe motta",
+      "ruc": "441-74-94389",
+      "dv": "76",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FELIPE RODRIGUEZ S A",
+      "ruc": "24638-93-213823",
+      "dv": "82",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FELIX B MADURO",
+      "ruc": "811226-1-498041",
+      "dv": "35",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FELIX BELLO",
+      "ruc": "8-1002-1559",
+      "dv": "35",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "FELIX VARGAS",
+      "ruc": "2-738-981",
+      "dv": "93",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "FERNANDO WILSON",
+      "ruc": "8-428-873",
+      "dv": "82",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "FERRE S A",
+      "ruc": "1017004-1-539605",
+      "dv": "30",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FG STREET MALL S A",
+      "ruc": "155613402-2-2015",
+      "dv": "80",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FIKA COFFEE & BRUNCH",
+      "ruc": "155727610-2-2022",
+      "dv": "02",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FINANZAS GENERALES",
+      "ruc": "3305-148-49959",
+      "dv": "15",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FLUGE CENTROAMERICA S A",
+      "ruc": "251140-1-821879",
+      "dv": "51",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FON PANAMA S A",
+      "ruc": "1720826-1-690296",
+      "dv": "99",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "formax, s.a.",
+      "ruc": "444103-1-430599",
+      "dv": "26",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FORTUNE AUTO PARTS S A",
+      "ruc": "155592527-2-2015",
+      "dv": "03",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "FRANCISCO MAURE",
+      "ruc": "8-969-1653",
+      "dv": "02",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "FRANCISCO SALADINO",
+      "ruc": "3-86-2260",
+      "dv": "57",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "FRANQUICIAS PANAMENAS S A",
+      "ruc": "2214-117-39496",
+      "dv": "51",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "fumi express",
+      "ruc": "8-853-1440",
+      "dv": "98",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "FUNDACION TECNOLOGICA DE PANAMA",
+      "ruc": "3007-2-11248",
+      "dv": "50",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "G MOBILES ELECTRONICS",
+      "ruc": "155637336-2-2016",
+      "dv": "60",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GABRIEL ORTEGA",
+      "ruc": "8-904-1452",
+      "dv": "42",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "gamira inversiones",
+      "ruc": "2649784-1-840604",
+      "dv": "86",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GAP COMMUNICATION AND SECURITY GROUP",
+      "ruc": "2064824-1-750309",
+      "dv": "04",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GENERAL DE SEGURO S A",
+      "ruc": "8837-47-91080",
+      "dv": "29",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GENERAL DE SEGUROS",
+      "ruc": "8837-47-91080",
+      "dv": "29",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GENERALI",
+      "ruc": "756-374-135990",
+      "dv": "70",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GENESIS VERNAZA",
+      "ruc": "8-887-1328",
+      "dv": "60",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "GEO F NOVEY",
       "ruc": "138-289-35920",
       "dv": "04",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GERMAN RAMIREZ",
+      "ruc": "8-866-1978",
+      "dv": "17",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "GIANFRANCO FERRONATO",
+      "ruc": "8-792-2014",
+      "dv": "51",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "GIGA ELECTRONICS SA",
+      "ruc": "1471971-1-642162",
+      "dv": "95",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "Gilberto Pino",
+      "ruc": "8-946-2079",
+      "dv": "41",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "GLOBAL BRAND PANAMA",
+      "ruc": "48870-93-312745",
+      "dv": "92",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GLOBAL PARKING",
+      "ruc": "1765038-1-698998",
+      "dv": "53",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GODEPHIER S A",
+      "ruc": "507-334-112571",
+      "dv": "05",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GODEPIHER S A",
+      "ruc": "507-334-112571",
+      "dv": "05",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GREEN BOX S A",
+      "ruc": "2178003-1-769856",
+      "dv": "02",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GRETA EARLE",
+      "ruc": "8-713-2111",
+      "dv": "96",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "GRUPO CATEDRAL S A",
+      "ruc": "155710933-2-2021",
+      "dv": "86",
       "tipo": "J",
       "concepto": 1
     },
@@ -90,12 +1889,26 @@
       "ruc": "47028-19-305805",
       "dv": "18",
       "tipo": "J",
-      "concepto": 2
+      "concepto": 1
     },
     {
-      "nombre": "GRUPO DEW COMUNICACINES DIGITALES, S.A.",
+      "nombre": "GRUPO DE TELECOMUNICACIONES TELEFONICAS",
       "ruc": "47028-19-305805",
       "dv": "18",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GRUPO LEO S A",
+      "ruc": "2544308-1-825411",
+      "dv": "16",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GRUPO MON",
+      "ruc": "7753-108-83601",
+      "dv": "60",
       "tipo": "J",
       "concepto": 1
     },
@@ -107,16 +1920,324 @@
       "concepto": 1
     },
     {
-      "nombre": "IMPORTADORA RICAMAR, S.A.",
+      "nombre": "GRUPO SOLUCIONES GERENCIALES",
+      "ruc": "1281637-1-600678",
+      "dv": "46",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GRUPO TODO A DOLAR S A",
+      "ruc": "682073-1-464676",
+      "dv": "33",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GRUPO TODO A DOLLAR S A",
+      "ruc": "682073-1-464676",
+      "dv": "33",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GRUPO WOODY BAKERY S A",
+      "ruc": "155649023-2-2017",
+      "dv": "53",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GSM ELECTRONIC SOLUTIONS SA",
+      "ruc": "155712409-2-2021",
+      "dv": "40",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "GUSTAVO ARIEL DE LEON",
+      "ruc": "8-455-588",
+      "dv": "43",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "GUSTAVO DE LEON",
+      "ruc": "8-455-588",
+      "dv": "43",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "GUSTAVO FABREGA",
+      "ruc": "4-735-748",
+      "dv": "10",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "GUSTAVO RUIZ",
+      "ruc": "8-913-872",
+      "dv": "84",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "GUSTAVO VALDIVIESO",
+      "ruc": "8-379-107",
+      "dv": "04",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "GX LIVE MARKETING S.A.",
+      "ruc": "155627237-2-2016",
+      "dv": "24",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "Hacienda los Molinos",
+      "ruc": "1804326-1-705955",
+      "dv": "91",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "HAMIR CUMBRERAS FRIAS",
+      "ruc": "8-921-1225",
+      "dv": "90",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "HAN WEI ZHANG LOO",
+      "ruc": "N-20-212",
+      "dv": "98",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "HARTING TRADING S A",
+      "ruc": "640277-1-457975",
+      "dv": "20",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "HECTOR DE LOS SANTOS JIMENEZ",
+      "ruc": "8-462-33",
+      "dv": "76",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "HERMANOS GAGO S A",
+      "ruc": "51070-52-320234",
+      "dv": "37",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "HERMANOS MAITLAND S A",
+      "ruc": "155625256-2-2016",
+      "dv": "70",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "HERMANOS MALDONADO",
+      "ruc": "2266017-1-784276",
+      "dv": "99",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "HERMOGENES MALDONADO",
+      "ruc": "8-NT-2-708081",
+      "dv": "54",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "HERNANDO CHARRY",
+      "ruc": "PAS.AS340436",
+      "dv": "00",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "HOTEL EL EJECUTIVO S A",
+      "ruc": "711-409-118751",
+      "dv": "64",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "IGOR JAEN",
+      "ruc": "8-288-85",
+      "dv": "38",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "IJIMED SALES AND SERVICES",
+      "ruc": "8-700-1300",
+      "dv": "72",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "IMPERIO GOURMET PANAMA S A",
+      "ruc": "155683986-2-2019",
+      "dv": "75",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "IMPORTADORA DE BATERIAS S A",
+      "ruc": "35226-2-259295",
+      "dv": "36",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "IMPORTADORA DE PLOMERIA",
+      "ruc": "510-302-109858",
+      "dv": "49",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "importadora rica mar",
       "ruc": "434-15-93796",
       "dv": "22",
       "tipo": "J",
       "concepto": 1
     },
     {
-      "nombre": "INMOBILIARIA DON ANTOPNIO, S.A.",
+      "nombre": "IMPORTADORA RICAMAR",
+      "ruc": "434-15-93796",
+      "dv": "22",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "IMPORTADORA RICAMAR RUC434-15-93796 DV22",
+      "ruc": "434-15-93796",
+      "dv": "22",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "IMPORTADORA Y EXPORTADORA AZUL",
+      "ruc": "155683930-2-2019",
+      "dv": "10",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INDEVE GROUP S A",
+      "ruc": "2580009-1-830870",
+      "dv": "31",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INMOBIALIRIA DON ANTONIO",
       "ruc": "541-81-118009",
       "dv": "06",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INMOBILIARIA DON ANTONIO RUC 541-81-118009 DV06",
+      "ruc": "541-81-118009",
+      "dv": "06",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INMOBILIARIA DON ANTONIO, S. A.",
+      "ruc": "541-81-118009",
+      "dv": "06",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INMOBILIARIA DON ANTONIO, S.A.",
+      "ruc": "541-81-118009",
+      "dv": "06",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INMOBILIARIA KITRO S A",
+      "ruc": "607-183-124939",
+      "dv": "02",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INSTALACIONES PERMANENTES",
+      "ruc": "2541299-1-824949",
+      "dv": "17",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "inversiones almaca inc",
+      "ruc": "2201878-1-773317",
+      "dv": "18",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INVERSIONES ALMANCA INC",
+      "ruc": "2201878-1-773317",
+      "dv": "18",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INVERSIONES CHARLIE INTL SA",
+      "ruc": "740973-1-477829",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INVERSIONES CHARLIE SA",
+      "ruc": "740973-1-477829",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INVERSIONES INTEK S.A",
+      "ruc": "1921128-1-726181",
+      "dv": "14",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "INVERSIONES PANAMERICANAS DEL CAFE DE PANAMA",
+      "ruc": "1692370-1-684786",
+      "dv": "72",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "inversiones platinum brands",
+      "ruc": "2278018-1-786343",
+      "dv": "70",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "IOVANE E IOVANE S A",
+      "ruc": "18636-76-172220",
+      "dv": "50",
       "tipo": "J",
       "concepto": 1
     },
@@ -128,10 +2249,465 @@
       "concepto": 1
     },
     {
-      "nombre": "JELLINI, S.A.",
+      "nombre": "IRVING JIMENEZ",
+      "ruc": "8-700-1300",
+      "dv": "72",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ISHOP TOWN CENTER",
+      "ruc": "2393264-1-803914",
+      "dv": "56",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ISRAEL GONZALEZ",
+      "ruc": "8-777-2277",
+      "dv": "95",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JACQUELINE DE ALVAREZ",
+      "ruc": "8-751-2307",
+      "dv": "70",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JAEL JATIIN JAEN",
+      "ruc": "3-717-240",
+      "dv": "78",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JAHIR OLIVARDIA",
+      "ruc": "8-836-334",
+      "dv": "87",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JAIME AVILA",
+      "ruc": "8-818-906",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JAIME CEDE?O",
+      "ruc": "8-818-1592",
+      "dv": "53",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JAIME CEDENO",
+      "ruc": "8-818-1592",
+      "dv": "53",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JAIR BENITEZ",
+      "ruc": "8-890-1606",
+      "dv": "10",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "japon food",
+      "ruc": "1444923-1-636905",
+      "dv": "81",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "JAQUELINE DE ALVAREZ",
+      "ruc": "8-751-2307",
+      "dv": "70",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JAVIER JIMENEZ",
+      "ruc": "8-773-2044",
+      "dv": "50",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JEAN CASTILLERO",
+      "ruc": "8-977-1547",
+      "dv": "49",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JEANSHELL CASTILLO",
+      "ruc": "8-880-386",
+      "dv": "27",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JELLINI SA",
       "ruc": "9857-220-101047",
       "dv": "81",
       "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "JENISEL PEREZ",
+      "ruc": "8-896-1367",
+      "dv": "67",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JENISSEL PEREZ",
+      "ruc": "8-896-1367",
+      "dv": "67",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JENNIFER HENRY",
+      "ruc": "8-980-06",
+      "dv": "71",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JEREMY ARAUZ",
+      "ruc": "4-822-1212",
+      "dv": "24",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JESUS AGUILAR",
+      "ruc": "8-431-445",
+      "dv": "46",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JESUS ARMENTEROS",
+      "ruc": "8-192-202",
+      "dv": "22",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JESUS SANJUR",
+      "ruc": "9-702-2233",
+      "dv": "92",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JHON HERNANDEZ",
+      "ruc": "PAS.176199324",
+      "dv": "00",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "JHONNY CHENG",
+      "ruc": "8-788-54",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JIMMY MURILLO",
+      "ruc": "AV242456",
+      "dv": "00",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "JINKUN PAN",
+      "ruc": "E-8-92731",
+      "dv": "22",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOEL ANTONIO RODRIGUEZ",
+      "ruc": "8-738-2171",
+      "dv": "67",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOEL MERCIER",
+      "ruc": "E-8-44758",
+      "dv": "27",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOEL RODRIGUEZ",
+      "ruc": "8-822-622",
+      "dv": "63",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOHAN EDISON GALVEZ",
+      "ruc": "8-887-238",
+      "dv": "15",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JORGE E GANTES S",
+      "ruc": "8-509-985",
+      "dv": "89",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JORGE LUIS PINZON",
+      "ruc": "8-721-2120",
+      "dv": "32",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JORGE PINO",
+      "ruc": "8-740-376",
+      "dv": "22",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JORGE RAMOS",
+      "ruc": "4-788-360",
+      "dv": "02",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "Jorge Vega",
+      "ruc": "4-744-2435",
+      "dv": "06",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOSE AGUIRRE",
+      "ruc": "8-900-2362",
+      "dv": "63",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOSE CHAN CHUNG",
+      "ruc": "8-792-896",
+      "dv": "00",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOSE DANIEL ESPINOSA",
+      "ruc": "8-878-524",
+      "dv": "17",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOSE FRANCISCO DOMINGUEZ",
+      "ruc": "8-996-2443",
+      "dv": "23",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "Jose Liao",
+      "ruc": "N-19-598",
+      "dv": "59",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOSE ORTEGA",
+      "ruc": "8-784-2407",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOSE PITTY",
+      "ruc": "8-944-238",
+      "dv": "10",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JOSE SALDA?A",
+      "ruc": "9-725-776",
+      "dv": "06",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JUAN EDUARDO VEGA",
+      "ruc": "8-397-42",
+      "dv": "06",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JUAN EDUARDO VEGA BENEDITO",
+      "ruc": "8-397-42",
+      "dv": "06",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JUAN J JUAREZ",
+      "ruc": "8-961-1399",
+      "dv": "03",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JUAN JOSE JUAREZ",
+      "ruc": "8-961-1399",
+      "dv": "03",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JUAN JUAREZ",
+      "ruc": "8-961-1399",
+      "dv": "03",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JUAN MORENO",
+      "ruc": "8-862-1150",
+      "dv": "62",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JUAN PABLO SEGISMOND",
+      "ruc": "8-797-901",
+      "dv": "81",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JUAN RODRIGUEZ",
+      "ruc": "8-988-1592",
+      "dv": "65",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JUDITH HENRIQUEZ",
+      "ruc": "8-739-258",
+      "dv": "80",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JULIETT OSORIO",
+      "ruc": "8-321-334",
+      "dv": "87",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JULIO CESAR SANTANA",
+      "ruc": "4-744-436",
+      "dv": "80",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "JULIO WATSON",
+      "ruc": "8-863-1873",
+      "dv": "33",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "KADIMA S A",
+      "ruc": "5837-93-70420",
+      "dv": "61",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "KAREN CHING",
+      "ruc": "3-709-1676",
+      "dv": "38",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "KAREN CHING WONG",
+      "ruc": "8-496-434",
+      "dv": "39",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "KARENG CHING WONG",
+      "ruc": "8-496-434",
+      "dv": "39",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "KARISA LOPEZ CASANOVA",
+      "ruc": "3-703-584",
+      "dv": "09",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "KARISSA LOPEZ",
+      "ruc": "3-703-584",
+      "dv": "09",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "KARLLELY RICO",
+      "ruc": "9-748-2260",
+      "dv": "93",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "KATHIA HOLNESS",
+      "ruc": "8-754-812",
+      "dv": "50",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "KEVIN DA SILVA",
+      "ruc": "8-820-1209",
+      "dv": "18",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "KING FUNG",
+      "ruc": "N-20-586",
+      "dv": "12",
+      "tipo": "N",
       "concepto": 1
     },
     {
@@ -142,6 +2718,20 @@
       "concepto": 1
     },
     {
+      "nombre": "KOUZINA",
+      "ruc": "155590971-1-22021",
+      "dv": "32",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "LA CASA DE LA BATERIAS S A",
+      "ruc": "1114-207-118013",
+      "dv": "02",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
       "nombre": "LA COCINA DE SOFY, S.A.",
       "ruc": "43946-81-293527",
       "dv": "36",
@@ -149,16 +2739,464 @@
       "concepto": 1
     },
     {
-      "nombre": "MACRO GROUP, S.A",
+      "nombre": "LA CUADRA MARKET REAL STATE",
+      "ruc": "155717158-2-2022",
+      "dv": "43",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "LA ESQUINITA",
+      "ruc": "155670200-2-2018",
+      "dv": "32",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "la nona s a",
+      "ruc": "1040-7-113711",
+      "dv": "80",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "LABORATORIOS RALY SA",
+      "ruc": "1442321-1-636293",
+      "dv": "80",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "LAM GOURMET INC",
+      "ruc": "2653052-1-841081",
+      "dv": "27",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "LAM GPURMET INC",
+      "ruc": "2653052-1-841081",
+      "dv": "27",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "LILIANA MARIA VEGA ROSAS DE HAYES",
+      "ruc": "8-246-90",
+      "dv": "19",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LILIANA VEGA",
+      "ruc": "8-246-90",
+      "dv": "19",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LILIANA VEGA DE HAYES",
+      "ruc": "8-246-90",
+      "dv": "19",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LISBETH RODRIGO",
+      "ruc": "9-742-2011",
+      "dv": "67",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LOLTEC COMPUTER CORP",
+      "ruc": "155598804-2-2015",
+      "dv": "65",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "LORENA TABON",
+      "ruc": "8-365-587",
+      "dv": "71",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LORENA TOBON",
+      "ruc": "8-365-587",
+      "dv": "71",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LORENA TOBON ABOOD",
+      "ruc": "8-365-587",
+      "dv": "71",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUANNA ROUX",
+      "ruc": "PE-13-1415",
+      "dv": "48",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "luces erbelka",
+      "ruc": "6-50-2610",
+      "dv": "17",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS ADOLFO VASQUEZ QUIJANO",
+      "ruc": "8-522-1308",
+      "dv": "19",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS ALEXANDER GRAIN",
+      "ruc": "8-889-2149",
+      "dv": "93",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS DIAZ",
+      "ruc": "8-438-469",
+      "dv": "71",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS GONZALEZ",
+      "ruc": "9-735-2133",
+      "dv": "15",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS GUSTAVO SALDANA",
+      "ruc": "8-324-797",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS GUSTAVO SALDANA BARRIA",
+      "ruc": "8-324-797",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS JACINTO JUAREZ",
+      "ruc": "8-334-693",
+      "dv": "68",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS JUAREZ",
+      "ruc": "8-334-693",
+      "dv": "68",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS PALMA",
+      "ruc": "8-441-519",
+      "dv": "43",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS ROMER CABALLERO",
+      "ruc": "8-211-1948",
+      "dv": "79",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS ROMERO",
+      "ruc": "75789-1-374714",
+      "dv": "03",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS SALDANA",
+      "ruc": "8-522-1308",
+      "dv": "19",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS TORCATT",
+      "ruc": "E-8-202198",
+      "dv": "50",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "LUIS VASQUEZ",
+      "ruc": "8-522-1308",
+      "dv": "19",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MABTEC INC",
+      "ruc": "155730232-2-2022",
+      "dv": "71",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MAC STORE PANAMA",
+      "ruc": "537091-1-441028",
+      "dv": "82",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MAC WORL PLUS",
+      "ruc": "8-453-917",
+      "dv": "30",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MACRO GROUP S A",
       "ruc": "912952-1-517511",
       "dv": "51",
       "tipo": "J",
       "concepto": 1
     },
     {
-      "nombre": "MEETING & SHOW TECHNOLOGIES, S A",
+      "nombre": "MAD PACIFIC CORP",
+      "ruc": "1999530-1-739965",
+      "dv": "57",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MADDEN COLON",
+      "ruc": "1059726-1-549472",
+      "dv": "13",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MADISSON STORE",
+      "ruc": "65219-68-360495",
+      "dv": "20",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MAGALYS HIDALGO",
+      "ruc": "8-953-2066",
+      "dv": "47",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MAGNO BARBER SHP SA",
+      "ruc": "2474369-1-815307",
+      "dv": "24",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MANRIQUE GRENALD",
+      "ruc": "1-49-210",
+      "dv": "00",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MARCELA CONTRERAS",
+      "ruc": "4-257-522",
+      "dv": "93",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MARCELLE PIERROZ DE BETHANCOURT",
+      "ruc": "N-18-713",
+      "dv": "50",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MARIA LUCIA NEBLETT",
+      "ruc": "8-836-812",
+      "dv": "95",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MARIA TORREZ",
+      "ruc": "8-1042-1808",
+      "dv": "99",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MARIO GOMEZ SANCHEZ",
+      "ruc": "8-837-295",
+      "dv": "71",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MARIO HARRISON",
+      "ruc": "8-800-671",
+      "dv": "18",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MARITZA ARANGO",
+      "ruc": "4-148-182",
+      "dv": "65",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MARITZA ORTEGA",
+      "ruc": "2-131-143",
+      "dv": "94",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MARLON MORRISON",
+      "ruc": "4-807-701",
+      "dv": "66",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MARTHA SANCHEZ",
+      "ruc": "8-963-2107",
+      "dv": "86",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "master s ng",
+      "ruc": "159470-1-387492",
+      "dv": "15",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MATERIALES EL VENTUROSO",
+      "ruc": "8-856-2048",
+      "dv": "54",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MAX CORREA",
+      "ruc": "4-758-725",
+      "dv": "93",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MAXINDUSTRIAS S A",
+      "ruc": "155591597-2-2015",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MAYLEE GRANADOS",
+      "ruc": "8-770-2278",
+      "dv": "18",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MCOPCO",
+      "ruc": "557-538-101617",
+      "dv": "06",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MEETING & SHOW TECHNOLOGIES",
       "ruc": "220-1-363731",
       "dv": "79",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MEETING & SHOW TECHONOLOGY",
+      "ruc": "220-1-363731",
+      "dv": "79",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MEETING AND SHOW TECHNOLOGIES S A",
+      "ruc": "220-1-363731",
+      "dv": "79",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MEGA RENT PTY S A",
+      "ruc": "1906344-1-723658",
+      "dv": "80",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MEGA STORAGE",
+      "ruc": "155591842-2-2015",
+      "dv": "60",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MELODY CHEMIER",
+      "ruc": "N-20-2125",
+      "dv": "57",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MERCURE LOGISTIC CORP",
+      "ruc": "2209666-1-774700",
+      "dv": "81",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MERLOT CORP",
+      "ruc": "591598-1-450131",
+      "dv": "86",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "METRO LEASING S A",
+      "ruc": "33117-74-250570",
+      "dv": "06",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "METROBUS",
+      "ruc": "130643-1-382730",
+      "dv": "21",
       "tipo": "J",
       "concepto": 1
     },
@@ -170,9 +3208,282 @@
       "concepto": 1
     },
     {
+      "nombre": "MICHAEL BERRIO",
+      "ruc": "8-710-1465",
+      "dv": "07",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MICHELLE NU?EZ",
+      "ruc": "8-748-745",
+      "dv": "70",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MIGUEL URRUTIA",
+      "ruc": "8-229-2320",
+      "dv": "65",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MINIMED",
+      "ruc": "1895740-1-721744",
+      "dv": "42",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MINISTERIO DE ECONOMIA Y FINANZAS",
+      "ruc": "8-NT-1-12571",
+      "dv": "66",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MINISTERIO DE ECONOMIA Y FINANZAS DE PANAMA",
+      "ruc": "8-NT-1-12571",
+      "dv": "66",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MINISUPER Y FRUTERIA JIMMY",
+      "ruc": "8-788-54",
+      "dv": "28",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MITZI VILLALOBOS",
+      "ruc": "8-481-423",
+      "dv": "72",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MOISES KIERSZENBLAST",
+      "ruc": "8-785-692",
+      "dv": "23",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MOISES KIERSZENBLAT",
+      "ruc": "8-785-692",
+      "dv": "23",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MOISES KIRSZENBLAT",
+      "ruc": "8-785-692",
+      "dv": "23",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MONICA TELLO",
+      "ruc": "PE-2-565",
+      "dv": "54",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MONICA TERESA TELLO VALLARINO DE TATE",
+      "ruc": "PE-2-565",
+      "dv": "54",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "MONOGRAMA ESTUIDO DE IMPRESIONES",
+      "ruc": "155761068-2-2024",
+      "dv": "06",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MOREZOR S A",
+      "ruc": "155589975-2-2014",
+      "dv": "21",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MOSAGRES S A",
+      "ruc": "1963759-1-734087",
+      "dv": "06",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MOTOR EMOTION S A",
+      "ruc": "2539733-1-824671",
+      "dv": "79",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MOTORES JAPONESES S A",
+      "ruc": "438-341-94672",
+      "dv": "13",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "mr jones",
+      "ruc": "1588049-1-663842",
+      "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MULTIMAX CORP S A",
+      "ruc": "1654226-1-676230",
+      "dv": "31",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MULTIPLASTIC S A",
+      "ruc": "1187-179-110584",
+      "dv": "85",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MULTIRASTRO S A",
+      "ruc": "1826936-1-709920",
+      "dv": "30",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MULTITEK PACIFICO S A",
+      "ruc": "36765-2-264774",
+      "dv": "49",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MULTITORNILLOS S A",
+      "ruc": "1912056-1-724668",
+      "dv": "53",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MUNICIPIO DE PANAMA",
+      "ruc": "8-NT-1-12701",
+      "dv": "89",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "MUSICA Y DEPORTE S A",
+      "ruc": "21908-287-196388",
+      "dv": "14",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "MUSICA Y DEPORTES S A",
+      "ruc": "21908-287-196388",
+      "dv": "14",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "NADINE KELLY DE CRUZ",
+      "ruc": "8-224-2691",
+      "dv": "60",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "NADINE SHARON KELLYS GREEN CRUZ",
+      "ruc": "8-224-2691",
+      "dv": "60",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "NATALIE RAMIREZ",
+      "ruc": "3-730-98",
+      "dv": "63",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "NATASHA JANES",
+      "ruc": "8-911-2401",
+      "dv": "76",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "NATIVIDAD QUIROZ",
+      "ruc": "2-106-1790",
+      "dv": "49",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "NATIVIDAD SANCHEZ",
+      "ruc": "9-210-731",
+      "dv": "04",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "NELCON CARGO CORP",
+      "ruc": "1615760-1-669261",
+      "dv": "45",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "NICOLE FITZGERALD",
+      "ruc": "8-805-2443",
+      "dv": "23",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "NIKOS CAFE",
+      "ruc": "33209-109-250936",
+      "dv": "65",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "NUEVOS HOTELES DE PANAMA",
+      "ruc": "10189-2-104236",
+      "dv": "34",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "O D PANAMA S A",
+      "ruc": "656-413-132700",
+      "dv": "15",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
       "nombre": "OCEANPARKING, S.A.",
       "ruc": "155703889-2-2023",
       "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "OD PANAMA S A",
+      "ruc": "656-413-132700",
+      "dv": "15",
       "tipo": "J",
       "concepto": 1
     },
@@ -184,6 +3495,48 @@
       "concepto": 1
     },
     {
+      "nombre": "ORLANDO ORTEGA",
+      "ruc": "8-299-190",
+      "dv": "20",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "orlyn",
+      "ruc": "630-483-123250",
+      "dv": "16",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ORNEL ALVARADO",
+      "ruc": "10-9-476",
+      "dv": "39",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "OSWALDO CONTABLE",
+      "ruc": "PAS.161001405",
+      "dv": "00",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "PABLO DALIA",
+      "ruc": "N-20-723",
+      "dv": "64",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "PABLO LAW",
+      "ruc": "2-718-1627",
+      "dv": "50",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
       "nombre": "PANA COMPU, S.A.",
       "ruc": "155646971-2-2017",
       "dv": "46",
@@ -191,9 +3544,219 @@
       "concepto": 1
     },
     {
-      "nombre": "PANAFOTO, S.A.",
+      "nombre": "PANADERIA EL DORADO",
+      "ruc": "26209-61-222826",
+      "dv": "76",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANADERIA Y DULCERIA EL DORADO S A",
+      "ruc": "26209-61-222826",
+      "dv": "76",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANAENTREGA CORP",
+      "ruc": "155636302-2-2016",
+      "dv": "94",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANAENTREGAS CORPORATION S A",
+      "ruc": "155636302-2-2016",
+      "dv": "94",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANAFFOTO S A",
       "ruc": "66159-91-363381",
       "dv": "05",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "panafoto",
+      "ruc": "66159-91-363381",
+      "dv": "05",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANAMA CAR RENTA S A",
+      "ruc": "419758-1-427175",
+      "dv": "97",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANAMA CAR RENTAL",
+      "ruc": "419758-1-427175",
+      "dv": "97",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANAME?A DE MOTORES S A",
+      "ruc": "866-176-101773",
+      "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANCANAL ENTERPRISE S A",
+      "ruc": "871523-1-509264",
+      "dv": "02",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANCO CENTROAMERICA S A",
+      "ruc": "1593871-1-665071",
+      "dv": "89",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PANETMA",
+      "ruc": "1462303-1-640026",
+      "dv": "33",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PAOLA RAMOS",
+      "ruc": "8-904-273",
+      "dv": "98",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "PARKING SOLUTIONS S A",
+      "ruc": "2054724-1-748584",
+      "dv": "79",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PARMIL PRODUCCIONES, S.A.",
+      "ruc": "155734565-2-2023",
+      "dv": "41",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PARSA SA",
+      "ruc": "4852-8-62703",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PAYLESS SHOESOURCE PANAMA, S.A.",
+      "ruc": "283658-1-407733",
+      "dv": "63",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PC PLANET S A",
+      "ruc": "607463-1-452626",
+      "dv": "03",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PEDIDOS YA",
+      "ruc": "8-NT-2-710658",
+      "dv": "83",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "petroleo delta",
+      "ruc": "11524-2-115657",
+      "dv": "78",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PETROLEOS DELTA S A",
+      "ruc": "11524-2-115657",
+      "dv": "78",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PGT LOGISTICS GROUP S A",
+      "ruc": "155713237-2-2021",
+      "dv": "21",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PH CONDOMINIO PLAZA INTERNACIONAL",
+      "ruc": "8-NT-2-10477",
+      "dv": "17",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PH DREAMS PLAZA",
+      "ruc": "8-NT-2-735940",
+      "dv": "00",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PH RIVER TOWER",
+      "ruc": "5-NT-2-5001976",
+      "dv": "03",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PIER 17 PANAMA INC",
+      "ruc": "1284105-1-601253",
+      "dv": "97",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PISO 3 STUDIO S A",
+      "ruc": "2031929-1-745015",
+      "dv": "60",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PIXELES & DISE?OS",
+      "ruc": "155601416-2-2015",
+      "dv": "41",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PLATINUM PROFESSIONAL SERVICES SA",
+      "ruc": "155627605-2-2016",
+      "dv": "99",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PLAZA INTERCONTINENTAL",
+      "ruc": "1286141-1-601798",
+      "dv": "00",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PREASA",
+      "ruc": "155764340-2-2025",
+      "dv": "09",
       "tipo": "J",
       "concepto": 1
     },
@@ -205,17 +3768,206 @@
       "concepto": 1
     },
     {
-      "nombre": "PRICESMART PANAMA SA",
+      "nombre": "Premium Cafe de Lationamerica S.A.",
+      "ruc": "2410160-1-806190",
+      "dv": "41",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PRICESAMRT PANAMA SA",
       "ruc": "898-241-102416",
       "dv": "63",
       "tipo": "J",
       "concepto": 1
     },
     {
-      "nombre": "REPUESTOS TECNI-PARTES",
-      "ruc": "N-20-212",
-      "dv": "98",
+      "nombre": "PRICESMART",
+      "ruc": "898-241-102416",
+      "dv": "63",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PRICESMART PANAMA",
+      "ruc": "898-241-102416",
+      "dv": "63",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PRODUCTOS DE REFRIGERACION Y AIRES ACONDICIONADOS S A",
+      "ruc": "1075658-1-553254",
+      "dv": "36",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PRODUCTOS SUPERIORES S A",
+      "ruc": "186-505-46878",
+      "dv": "80",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "psauto panama",
+      "ruc": "1233738-1-589444",
+      "dv": "04",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PUBLI UNO S A",
+      "ruc": "1141773-1-569714",
+      "dv": "45",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PUBLIUNO S A",
+      "ruc": "1141773-1-569714",
+      "dv": "45",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "PURISSIMA S A",
+      "ruc": "35811-21-261362",
+      "dv": "54",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "QUALITY LIDERSHIP UNIVERSITY",
+      "ruc": "54767-15-331741",
+      "dv": "48",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "QUICK MAIL DELIVERY",
+      "ruc": "8-NT-2-38082",
+      "dv": "10",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "QUICKMAIL DELIVERY",
+      "ruc": "8-NT-2-38082",
+      "dv": "10",
       "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RAFAEL DE LA FUENTE",
+      "ruc": "N-17-126",
+      "dv": "52",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RAFAEL DE LEON",
+      "ruc": "9-728-46",
+      "dv": "40",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RAFAEL GONZALEZ",
+      "ruc": "4-787-968",
+      "dv": "00",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RAIZA RODRIGUEZ",
+      "ruc": "8-339-671",
+      "dv": "30",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RAMON VALLARINO",
+      "ruc": "8-818-1989",
+      "dv": "09",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RAMON VALLARINO SIERRA",
+      "ruc": "8-818-1989",
+      "dv": "09",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RAUL CHAVARRIA",
+      "ruc": "8-244-162",
+      "dv": "57",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "Raul Miguel Adames Lou",
+      "ruc": "8-914-1401",
+      "dv": "29",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "REGISTRO PUBLICO",
+      "ruc": "8-NT-1-22244",
+      "dv": "40",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "REGISTRO PUBLICO DE PANAMA",
+      "ruc": "8-NT-1-22244",
+      "dv": "40",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "RELAX CALA S A",
+      "ruc": "2299452-1-789675",
+      "dv": "57",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "RENE CASTILLO",
+      "ruc": "8-840-2328",
+      "dv": "50",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RENTA EQUIPOS S A",
+      "ruc": "1129851-1-566686",
+      "dv": "10",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "REPUESTOS CONTINENTALES",
+      "ruc": "41835-28-285457",
+      "dv": "75",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "REPUESTOS INTERNACIONALES S A",
+      "ruc": "4711-2-61584",
+      "dv": "79",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "REPUESTOS MUNDIALES S A",
+      "ruc": "15025-77-145429",
+      "dv": "77",
+      "tipo": "J",
       "concepto": 1
     },
     {
@@ -226,9 +3978,268 @@
       "concepto": 1
     },
     {
-      "nombre": "RESTAURANTE BENDICION",
+      "nombre": "RESTAURANTE LA BENDICION, S.A.",
       "ruc": "155735853-2-2023",
       "dv": "69",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "RIBA SMITH S A",
+      "ruc": "342-240-75526",
+      "dv": "50",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "RICAEDO FABBRONI",
+      "ruc": "8-219-1406",
+      "dv": "90",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RICARDO FABBRIONI",
+      "ruc": "8-219-1406",
+      "dv": "90",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RICARDO FABBRONI",
+      "ruc": "8-219-1406",
+      "dv": "90",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RICARDO FABBRONI V",
+      "ruc": "8-219-1406",
+      "dv": "90",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RICARDO FABRONNI",
+      "ruc": "8-219-1406",
+      "dv": "90",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RICARDO LABRADOR",
+      "ruc": "8-708-398",
+      "dv": "16",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RICARDO MARTINEZ",
+      "ruc": "8-NT-2-105708",
+      "dv": "76",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "RICARDO PAREJA",
+      "ruc": "PE-9-16",
+      "dv": "00",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RICARDO TU?ON",
+      "ruc": "8-758-2108",
+      "dv": "83",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RICARDO TUNON",
+      "ruc": "8-758-2108",
+      "dv": "83",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ROBERTO DORCY",
+      "ruc": "8-809-1230",
+      "dv": "71",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ROBERTO RODRIGUEZ",
+      "ruc": "8-704-639",
+      "dv": "02",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ROBERTO SANTOYA",
+      "ruc": "8-453-917",
+      "dv": "30",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "Rock and Flok Panama S.A.",
+      "ruc": "155596987-2-2015",
+      "dv": "39",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "RODERICK CASTILLO",
+      "ruc": "1-700-2322",
+      "dv": "00",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ROGELIA VANRIEL",
+      "ruc": "8-299-89",
+      "dv": "23",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ROGELIO FLORES",
+      "ruc": "8-806-2450",
+      "dv": "98",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ROGELIO ONESIMO FLORES CEDENO",
+      "ruc": "8-806-2450",
+      "dv": "98",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ROSA WAN",
+      "ruc": "8-856-2048",
+      "dv": "54",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ROSSANA URIBE",
+      "ruc": "E-8-43544",
+      "dv": "42",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "RUBEN ANTONIO TORIBIO",
+      "ruc": "8-871-1027",
+      "dv": "41",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RUBY CASTILLO",
+      "ruc": "4-138-2152",
+      "dv": "20",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RUBY CASTILLO DE SABET",
+      "ruc": "4-138-2152",
+      "dv": "20",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RUBY E. CASTILLO DE SABET",
+      "ruc": "4-138-2152",
+      "dv": "20",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "RUEDAS Y CARRITOS",
+      "ruc": "558357-1-444639",
+      "dv": "94",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SALOMON DELI GROUP",
+      "ruc": "155602970-2-2015",
+      "dv": "19",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SALVA MI MAQUINA",
+      "ruc": "155650250-2-2017",
+      "dv": "59",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SANDRA SAMUDIO",
+      "ruc": "4-142-1393",
+      "dv": "84",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "SASHA ARANA",
+      "ruc": "8-822-2290",
+      "dv": "60",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "SATURNINO FERNANDEZ",
+      "ruc": "2-719-99",
+      "dv": "20",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "SEBASTIAN MUNOZ",
+      "ruc": "E-8-95812",
+      "dv": "11",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "SEDERIA NIGAN",
+      "ruc": "8-792-896",
+      "dv": "00",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "SEINCA",
+      "ruc": "2005339-1-740969",
+      "dv": "90",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SEMFYL S A",
+      "ruc": "30773-73-240340",
+      "dv": "08",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SERPROCOM",
+      "ruc": "6-705-1473",
+      "dv": "98",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "SERVICIO DE INGENIERIA",
+      "ruc": "2665356-1-842745",
+      "dv": "20",
       "tipo": "J",
       "concepto": 1
     },
@@ -240,9 +4251,93 @@
       "concepto": 1
     },
     {
+      "nombre": "SERVICIOS TURISTICOS PANAMENOS S A",
+      "ruc": "870-74-102345",
+      "dv": "77",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SHALOM S A",
+      "ruc": "1508-31-30247",
+      "dv": "09",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SHEILA CONTRERAS",
+      "ruc": "4-142-1266",
+      "dv": "49",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "SHIRTON S A",
+      "ruc": "1049678-1-547235",
+      "dv": "03",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SI CHI LEUNG",
+      "ruc": "PE-9-1312",
+      "dv": "29",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "SI CHIN LEUNG",
+      "ruc": "PE-9-1312",
+      "dv": "29",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "SIIRSA",
+      "ruc": "2665356-1-842745",
+      "dv": "20",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
       "nombre": "SILABA MOTORS, S.A.",
       "ruc": "580-422-120054",
       "dv": "92",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SISTEMA DE INCENTIVOS EMPRESARIALES",
+      "ruc": "521347-1-438253",
+      "dv": "70",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SISTEMAS DE INCENTIVOS EMPRESARIALES",
+      "ruc": "521347-1-438253",
+      "dv": "70",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SKYNET TECHNOLOGY SERVICES",
+      "ruc": "2592443-1-832515",
+      "dv": "84",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SOLO AIRE S A",
+      "ruc": "155649414-2-2017",
+      "dv": "50",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SOLUCIONES DE LOCALIZACION TRAAKER S A",
+      "ruc": "1566548-1-659951",
+      "dv": "89",
       "tipo": "J",
       "concepto": 1
     },
@@ -254,10 +4349,619 @@
       "concepto": 1
     },
     {
+      "nombre": "SOLUCIONES DE LOCALIZACION TRAKER S A",
+      "ruc": "1566548-1-659951",
+      "dv": "89",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SOLUCIONES DE PUNTO DE VENTA",
+      "ruc": "1837393-1-711438",
+      "dv": "52",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SOLUCIONES DE PUNTO DE VENTA S",
+      "ruc": "1837393-1-711438",
+      "dv": "52",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SOLUCIONES EXTRA S A",
+      "ruc": "2694157-1-847218",
+      "dv": "57",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SOLUCIONES INFORMATICAS Y SERVICIOS",
+      "ruc": "1-703-305",
+      "dv": "08",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "SOLUCIONES INFORMATICOS Y SERVICIOS",
+      "ruc": "8-NT-2-10578",
+      "dv": "76",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "SONO AUDIO ROCK, S.A.",
+      "ruc": "58790-60-342689",
+      "dv": "46",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
       "nombre": "SPECTRUM AUDIOVISUALES",
       "ruc": "8-522-1308",
       "dv": "19",
       "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "SPETCTRUM AUDIOVISUALES",
+      "ruc": "8-522-1308",
+      "dv": "19",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "St George Bank",
+      "ruc": "54842-57-331926",
+      "dv": "16",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "STANLEY CHAVERRA",
+      "ruc": "8-959-1427",
+      "dv": "50",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "STARBUCKS",
+      "ruc": "7799-185-83887",
+      "dv": "90",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "STARLINK",
+      "ruc": "155707729-2-2021",
+      "dv": "97",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "STARLINK INTERNET",
+      "ruc": "155707729-2-2021",
+      "dv": "97",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "STARLINK INTERNET SERVICES",
+      "ruc": "155707729-2-2021",
+      "dv": "97",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "STARLINK INTERNET SERVICES PANAMA",
+      "ruc": "155707729-2-2021",
+      "dv": "97",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "STEVEN SALVADOR GONZALEZ MARTINEZ",
+      "ruc": "PASSC03947819",
+      "dv": "00",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "STOES TRADUCCIONES PANAMA INC",
+      "ruc": "155606740-2-2015",
+      "dv": "83",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "STREET STORAGE CORP",
+      "ruc": "155591842-2-2015",
+      "dv": "60",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "STRET STORAGE PANAMA",
+      "ruc": "155591842-2-2015",
+      "dv": "60",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "super 99",
+      "ruc": "434-15-93796",
+      "dv": "22",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SUPERMERCADO XTRA",
+      "ruc": "356-19-77860",
+      "dv": "12",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SUPERMERCADOS XTRA S A",
+      "ruc": "356-19-77860",
+      "dv": "12",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SUPREME CARWASH IRVING PEREZ",
+      "ruc": "8-796-618",
+      "dv": "04",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "SUPRO",
+      "ruc": "75789-1-374714",
+      "dv": "03",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SUPROCASA",
+      "ruc": "75789-1-374714",
+      "dv": "03",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "SWEET BLOSSOM SA",
+      "ruc": "155735412-2-2023",
+      "dv": "58",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "t shirt interamerica",
+      "ruc": "8864-123-91468",
+      "dv": "24",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "T SHIRT INTERAMERICANA S A",
+      "ruc": "666175-1-462048",
+      "dv": "91",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "T SHIRTS INTERAMERICA S A",
+      "ruc": "8864-123-91468",
+      "dv": "24",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "T SHIRTS INTERAMERICANA S A",
+      "ruc": "383287-8001",
+      "dv": "13",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "T-SHIRTS INTERAMERICANA, S.A",
+      "ruc": "8864-123-91468",
+      "dv": "24",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TACONTENTO S A",
+      "ruc": "2093651-1-755577",
+      "dv": "86",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TAMBOR S A",
+      "ruc": "337-297-72453",
+      "dv": "95",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TARGET S A",
+      "ruc": "62137-36-351360",
+      "dv": "54",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TATIANA PITTY",
+      "ruc": "8-707-101",
+      "dv": "22",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "TEAM DUO BOT SA",
+      "ruc": "155642193-2-2016",
+      "dv": "71",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TECNO-PACK S A",
+      "ruc": "370043-1-420186",
+      "dv": "23",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TELEFONICA MOVILES",
+      "ruc": "47028-19-305805",
+      "dv": "18",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TELEFONICA MOVILES DE PANAMA",
+      "ruc": "47028-19-305805",
+      "dv": "18",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TELEFONICA MOVILES PANAMA",
+      "ruc": "47028-19-305805",
+      "dv": "18",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TELEFONICAS MOVILES PANAMA S A",
+      "ruc": "47028-19-305805",
+      "dv": "18",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "THAIRIS BERMUDEZ",
+      "ruc": "8-843-1939",
+      "dv": "41",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "THEO VERDURMEN",
+      "ruc": "8-733-1116",
+      "dv": "08",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "TIENDAS DE CONVENIENCIA",
+      "ruc": "2158079-1-766480",
+      "dv": "11",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TODO A DOLLAR",
+      "ruc": "682073-1-464676",
+      "dv": "33",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TOTO ISLA SA",
+      "ruc": "155633192-2-2016",
+      "dv": "90",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TOVA S A",
+      "ruc": "65219-68-360495",
+      "dv": "20",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TRADE INC",
+      "ruc": "8-496-434",
+      "dv": "39",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "TRANSPORTE SALINAS",
+      "ruc": "8-300-435",
+      "dv": "32",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "trasporte xep,s.a.",
+      "ruc": "1615760-1-669261",
+      "dv": "45",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "trf services",
+      "ruc": "1070445-1-551977",
+      "dv": "46",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TROPICAL RESORT INTL",
+      "ruc": "49063-111-313586",
+      "dv": "28",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TSHIRTS INTERAMERICANA S A",
+      "ruc": "8864-123-91468",
+      "dv": "24",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "UBER",
+      "ruc": "1151585-1-571890",
+      "dv": "45",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "UBER PANAMA",
+      "ruc": "1151585-1-571890",
+      "dv": "45",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "UBER PANAMA TECHNOLOGY INC",
+      "ruc": "2456294-1-812932",
+      "dv": "90",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ULISES MARTINEZ",
+      "ruc": "8-858-598",
+      "dv": "09",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "UNIDOS DEL ESTE",
+      "ruc": "155631807-2-2016",
+      "dv": "90",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "UNIGREEN MARINE",
+      "ruc": "44709-76-296870",
+      "dv": "40",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "UPS FREIGHT SERVICES",
+      "ruc": "37914-2-269514",
+      "dv": "35",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "UZZIEL MAGUE",
+      "ruc": "8-321-956",
+      "dv": "79",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "VALLES Y ASOCIADOS",
+      "ruc": "25029056-3-2016",
+      "dv": "30",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "VDS TECHNO SOLUTIONS S A",
+      "ruc": "155588899-2-2014",
+      "dv": "19",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "VEGA BENEDITO ABOGADOS",
+      "ruc": "932522-1-23550",
+      "dv": "88",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "VERONICA DE GRACIA",
+      "ruc": "9-738-1790",
+      "dv": "42",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "VERU S A",
+      "ruc": "8196-109-86727",
+      "dv": "01",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "VERUSHKA JAMES",
+      "ruc": "8-746-431",
+      "dv": "06",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "VICTOR CABALLERO",
+      "ruc": "4-728-814",
+      "dv": "14",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "VICTOR MANUEL GONZALEZ",
+      "ruc": "8-701-1896",
+      "dv": "73",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "VICTOR REINIER SAMUDIO ATENCIO",
+      "ruc": "4-762-2143",
+      "dv": "00",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "VICTOR SAMUDIO",
+      "ruc": "4-762-2143",
+      "dv": "00",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "VITALIFE S A",
+      "ruc": "1592277-1-664749",
+      "dv": "52",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "VIVEROS UNIDOS S A",
+      "ruc": "35850-9-261453",
+      "dv": "73",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "WILLY CAR WASH",
+      "ruc": "871523-1-509264",
+      "dv": "02",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "WILMER PEREZ",
+      "ruc": "144784440",
+      "dv": "00",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "WILMWER PEREZ BATISTA",
+      "ruc": "144784440",
+      "dv": "00",
+      "tipo": "E",
+      "concepto": 1
+    },
+    {
+      "nombre": "WILSON QUINTERO",
+      "ruc": "13-NT-2-720498",
+      "dv": "70",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "wod house",
+      "ruc": "2130845-1-761953",
+      "dv": "47",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "YADIRA SANCHEZ",
+      "ruc": "8-918-374",
+      "dv": "00",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "YISELLHERNANDEZ",
+      "ruc": "4-724-1780",
+      "dv": "42",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "YOYTEC",
+      "ruc": "963942-1-528502",
+      "dv": "19",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "YOYTEC COMPUTER SA",
+      "ruc": "963942-1-528502",
+      "dv": "19",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "YULEISSY BLANDON",
+      "ruc": "8-995-795",
+      "dv": "08",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ZAIDE SUCRE",
+      "ruc": "8-190-900",
+      "dv": "39",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ZAIDEE SUCRE",
+      "ruc": "8-190-900",
+      "dv": "39",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "ZELMA DE ROUX",
+      "ruc": "8-378-296",
+      "dv": "07",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
+      "nombre": "Zoombeats International SDAD LTDA",
+      "ruc": "1001117-1-592",
+      "dv": "60",
+      "tipo": "E",
       "concepto": 1
     }
   ]
