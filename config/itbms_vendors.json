@@ -268,6 +268,13 @@
       "concepto": 1
     },
     {
+      "nombre": "ANDREA  MADRID (INVERSIONES IN",
+      "ruc": "4-160-643",
+      "dv": "31",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
       "nombre": "ANDRES ELOY RIVERA",
       "ruc": "PE-12-1363",
       "dv": "47",
@@ -1199,6 +1206,13 @@
       "concepto": 1
     },
     {
+      "nombre": "EDGARDO AGUILAR",
+      "ruc": "8-797-882",
+      "dv": "84",
+      "tipo": "N",
+      "concepto": 1
+    },
+    {
       "nombre": "EDGARDO FERNANDEZ",
       "ruc": "8-860-951",
       "dv": "20",
@@ -1300,6 +1314,13 @@
       "nombre": "ELECTRONICA ATLANTICO S A",
       "ruc": "378345-1-421317",
       "dv": "98",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "ELECTRONICA JAPON (EJP ELECTRONICS, S.A.)",
+      "ruc": "714715-1-471701",
+      "dv": "54",
       "tipo": "J",
       "concepto": 1
     },
@@ -2130,6 +2151,13 @@
       "concepto": 1
     },
     {
+      "nombre": "IMPORTADORA RICAMAR,S .A.",
+      "ruc": "434-15-93796",
+      "dv": "22",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
       "nombre": "IMPORTADORA Y EXPORTADORA AZUL",
       "ruc": "155683930-2-2019",
       "dv": "10",
@@ -2778,6 +2806,13 @@
       "ruc": "2653052-1-841081",
       "dv": "27",
       "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "LEONIDAS CLEMENTE HERRERA",
+      "ruc": "7-108-503",
+      "dv": "87",
+      "tipo": "N",
       "concepto": 1
     },
     {
@@ -4580,6 +4615,13 @@
       "concepto": 1
     },
     {
+      "nombre": "TALLER MAGNOLIA, S.A.",
+      "ruc": "9321-131-95539",
+      "dv": "31",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
       "nombre": "TAMBOR S A",
       "ruc": "337-297-72453",
       "dv": "95",
@@ -4611,6 +4653,13 @@
       "nombre": "TECNO-PACK S A",
       "ruc": "370043-1-420186",
       "dv": "23",
+      "tipo": "J",
+      "concepto": 1
+    },
+    {
+      "nombre": "TELAS LOS PUEBLOS, S.A.",
+      "ruc": "155665615-2-2018",
+      "dv": "20",
       "tipo": "J",
       "concepto": 1
     },
