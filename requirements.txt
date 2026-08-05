@@ -1,3 +1,9 @@
-streamlit>=1.30.0
+# 2026-08-05: starlette 1.4.0 added a required keyword-only arg to
+# GZipResponder.__init__, which broke Streamlit 1.61.0's gzip middleware
+# (every request 500'd). streamlit 1.61.1 caps starlette itself; the
+# explicit cap below is belt-and-suspenders.
+streamlit==1.61.1
+starlette<1.4.0
+
 openpyxl>=3.1.0
 pandas>=2.0.0
